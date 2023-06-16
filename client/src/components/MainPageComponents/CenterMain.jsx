@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { QuestionApiState } from "../Atoms/QuestionApiState";
+import { QuestionApiState } from "../../Atoms/QuestionApiState";
 import { useQuery } from "@tanstack/react-query";
 import MainTab from "./MainTab";
 import QuestionCard from "./QuestionCard";

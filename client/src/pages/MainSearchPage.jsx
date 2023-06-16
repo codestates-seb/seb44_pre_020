@@ -1,7 +1,7 @@
 import React from "react";
-import LeftSidebar from "../components/LeftSidebar";
-import RightSidebar from "../components/RightSidebar";
-import CenterMain from "../components/CenterMain";
+import LeftSidebar from "../components/MainPageComponents/LeftSidebar";
+import CenterMain from "../components/MainPageComponents/CenterMain";
+import RightSidebar from "../components/MainPageComponents/RightSidebar";
 
 export default function MainSearchPage() {
   return (
