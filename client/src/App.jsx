@@ -1,5 +1,13 @@
+import Header from "./components/header/Header.jsx";
+
 function App() {
-  return <div className=" text-1xl">브랜치 생성</div>;
+  return (
+    <>
+      <Header />
+  </>
+
+  )
 }
 
 export default App;
+
