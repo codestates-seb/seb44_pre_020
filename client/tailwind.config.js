@@ -6,6 +6,7 @@ export default {
       backgroundColor: {
         "ask-1": "#ebf4fb",
         "ask-2": "#f7f7f8",
+        "ask-3": "#f8f9f9",
       },
       borderColor: {
         "ask-1": "rgb(166, 206, 237)",
