@@ -19,3 +19,9 @@ export const dropUp = (
     <path d="m16.01 10.62-1.4 1.4L9 6.45l-5.59 5.59-1.4-1.41 7-7 7 7Z"></path>
   </svg>
 );
+
+export const removeBtn = (
+  <svg width="14" height="14" viewBox="0 0 14 14">
+    <path d="M12 3.41L10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7z"></path>
+  </svg>
+);

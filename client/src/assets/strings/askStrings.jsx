@@ -17,7 +17,7 @@ export const steps = {
   text5: "• Review your question and post it to the site.",
 };
 
-export const title = {
+export const titleString = {
   title: "Title",
   text1: "Be specific and imagine you're asking a question to another person.",
   text2: "e.g. why is Javascript so weird?",
@@ -47,7 +47,7 @@ export const guide3 = {
     "Tag things in more than one way so people can find them more easily. Add tags for product lines, projects, teams, and the specific technologies or languages used.",
 };
 
-export const body = {
+export const bodyString = {
   title: "Body",
   text1:
     "The body of your question contains your problem details and results. Minimum 220 characters.",
@@ -55,11 +55,12 @@ export const body = {
   height: "h-64",
 };
 
-export const tags = {
+export const tagString = {
   title: "Tags",
   text1:
     "Add up to 5 tags to describe what your question is about. Start typing to see suggestions.",
   text2: "e.g. (pandas react spring)",
+  text3: "Add Tag",
 };
 
 export const review = {
