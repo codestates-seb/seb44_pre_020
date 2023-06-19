@@ -16,17 +16,17 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <NotFound />,
     children: [
-      { index: true, element: <MainSearchPage /> },
+      { index: true, element: <LoginPage /> },
       {
         path: "/ask",
         element: <AskPage />,
       },
       {
-        path: "/login",
-        element: <LoginPage />,
+        path: "/home",
+        element: <MainSearchPage />,
       },
       {
-        path: "/questions",
+        path: "/questions/:id",
         element: <QuestionsPage />,
       },
     ],

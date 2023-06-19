@@ -22,7 +22,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
     "react-router-dom": "^6.13.0",
-    "recoil": "^0.7.7"
+    "recoil": "^0.7.7",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

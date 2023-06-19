@@ -4,19 +4,31 @@ import { QuestionApiState } from "../../Atoms/QuestionApiState";
 import { useQuery } from "@tanstack/react-query";
 import MainTab from "./MainTab";
 import QuestionCard from "./QuestionCard";
+import { useNavigate } from "react-router-dom";
 
 export default function CenterMain() {
   const question = useRecoilValue(QuestionApiState);
   const { isLoading, error, data: questions } = useQuery(["questions"], () => question.search());
+  const navigate = useNavigate();
   console.log(questions);
 
   return (
     <>
-      <div className=" flex justify-between pb-5 border-b-2">
-        <h1 className="text-3xl font-medium pl-5">Top Questions</h1>
-        <button className=" bg-[#1e95ff] hover:bg-[#0074CC] text-base text-white rounded-[4px] p-[10px]">Ask Question</button>
+      <div className=" flex flex-col pb-4 border-b-2">
+        <div className=" flex justify-between">
+          <h1 className="text-3xl font-medium pl-6">Top Questions</h1>
+          <button
+            onClick={() => navigate(`/ask`)}
+            className=" bg-[#1e95ff] hover:bg-[#0074CC] text-base text-white rounded-[4px] p-[9px]"
+          >
+            Ask Question
+          </button>
+        </div>
+        <div className=" flex justify-end mt-7">
+          <MainTab />
+        </div>
       </div>
-      <MainTab />
+
       <section>
         {isLoading && <p>Loading...</p>}
         {error && <p>Error...</p>}
