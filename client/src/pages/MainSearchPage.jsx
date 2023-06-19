@@ -5,7 +5,7 @@ import RightSidebar from "../components/MainPageComponents/RightSidebar";
 
 export default function MainSearchPage() {
   return (
-    <div className="flex py-10">
+    <div className="flex py-10 ">
       <aside className="fixed w-1.1/12 pr-4">
         <LeftSidebar />
       </aside>

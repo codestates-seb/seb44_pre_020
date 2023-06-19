@@ -1,8 +1,10 @@
 import React from "react";
 import Tags from "./Tags";
+import { useNavigate } from "react-router-dom";
 
 export default function QuestionCard({ question }) {
   const { title, content, author, date, answers, score, tags, views } = question;
+  const navigate = useNavigate();
 
   return (
     <li className=" flex py-5 border-b-2">
@@ -13,7 +15,7 @@ export default function QuestionCard({ question }) {
       </div>
       <div>
         <div className=" text-xl text-[#0074CC]">{title}</div>
-        <div>
+        <div className=" flex justify-end">
           <Tags tags={tags} />
           <span>{author}</span>
           <span>{date}</span>
