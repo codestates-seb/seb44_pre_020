@@ -5,20 +5,25 @@ import Ask from "./pages/Ask.jsx";
 import "./index.css";
 import { RecoilRoot } from "recoil";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import NotFound from "./components/NotFound.jsx";
+import MainSearchPage from "./pages/MainSearchPage.jsx";
 import LoginPage from "./pages/Login/LoginPage.jsx";
-
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/ask",
-    element: <Ask />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
+    errorElement: <NotFound />,
+    children: [
+      { index: true, element: <MainSearchPage /> },
+      {
+        path: "/ask",
+        element: <Ask />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+    ],
   },
 ]);
 

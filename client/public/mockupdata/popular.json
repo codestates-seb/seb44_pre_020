@@ -8,7 +8,8 @@
       "date": "2023-06-15",
       "answers": 2,
       "score": 5,
-      "tags": ["react", "redux"]
+      "tags": ["react", "redux"],
+      "views": 132
     },
     {
       "id": 2,
@@ -18,7 +19,8 @@
       "date": "2023-06-14",
       "answers": 4,
       "score": 10,
-      "tags": ["react", "hooks", "useState"]
+      "tags": ["react", "hooks", "useState"],
+      "views": 252
     },
     {
       "id": 3,
@@ -28,7 +30,8 @@
       "date": "2023-06-13",
       "answers": 3,
       "score": 8,
-      "tags": ["css", "grid", "flexbox"]
+      "tags": ["css", "grid", "flexbox"],
+      "views": 79
     },
     {
       "id": 4,
@@ -38,7 +41,8 @@
       "date": "2023-06-12",
       "answers": 5,
       "score": 9,
-      "tags": ["javascript", "async", "await"]
+      "tags": ["javascript", "async", "await"],
+      "views": 110
     },
     {
       "id": 5,
@@ -48,7 +52,173 @@
       "date": "2023-06-11",
       "answers": 4,
       "score": 6,
-      "tags": ["javascript", "closure"]
+      "tags": ["javascript", "closure"],
+      "views": 90
+    },
+    {
+      "id": 6,
+      "title": "Working with arrays in Python?",
+      "content": "I'm new to Python and I need help with working with arrays. Any suggestions?",
+      "author": "User12",
+      "date": "2023-06-09",
+      "answers": 3,
+      "score": 8,
+      "tags": ["python", "arrays"],
+      "views": 250
+    },
+    {
+      "id": 7,
+      "title": "Responsive web design techniques?",
+      "content": "What are some effective techniques for creating responsive web designs?",
+      "author": "User8",
+      "date": "2023-06-08",
+      "answers": 6,
+      "score": 12,
+      "tags": ["web design", "responsive design"],
+      "views": 560
+    },
+    {
+      "id": 8,
+      "title": "Getting started with React Hooks",
+      "content": "I want to learn more about React Hooks. Can someone provide a beginner's guide?",
+      "author": "User17",
+      "date": "2023-06-07",
+      "answers": 9,
+      "score": 15,
+      "tags": ["react", "hooks"],
+      "views": 780
+    },
+    {
+      "id": 9,
+      "title": "Introduction to machine learning algorithms",
+      "content": "Can anyone provide a brief overview of commonly used machine learning algorithms?",
+      "author": "User22",
+      "date": "2023-06-05",
+      "answers": 7,
+      "score": 10,
+      "tags": ["machine learning", "algorithms"],
+      "views": 620
+    },
+    {
+      "id": 10,
+      "title": "CSS flexbox vs. grid: Which one to use?",
+      "content": "What are the main differences between CSS flexbox and grid layout? When should I use each?",
+      "author": "User14",
+      "date": "2023-06-04",
+      "answers": 5,
+      "score": 9,
+      "tags": ["css", "flexbox", "grid"],
+      "views": 480
+    },
+    {
+      "id": 11,
+      "title": "Best practices for RESTful API design",
+      "content": "What are some recommended best practices for designing RESTful APIs?",
+      "author": "User29",
+      "date": "2023-06-02",
+      "answers": 11,
+      "score": 18,
+      "tags": ["api", "rest", "best practices"],
+      "views": 920
+    },
+    {
+      "id": 12,
+      "title": "Introduction to data structures in C++",
+      "content": "I'm learning C++ and I need an introduction to common data structures. Any resources?",
+      "author": "User19",
+      "date": "2023-06-01",
+      "answers": 4,
+      "score": 7,
+      "tags": ["c++", "data structures"],
+      "views": 380
+    },
+    {
+      "id": 13,
+      "title": "Tips for improving website performance",
+      "content": "What are some effective strategies for improving website performance?",
+      "author": "User11",
+      "date": "2023-05-31",
+      "answers": 8,
+      "score": 13,
+      "tags": ["performance", "web development"],
+      "views": 520
+    },
+    {
+      "id": 14,
+      "title": "Working with databases in PHP",
+      "content": "I'm looking for tutorials on how to work with databases using PHP. Any recommendations?",
+      "author": "User27",
+      "date": "2023-05-30",
+      "answers": 6,
+      "score": 11,
+      "tags": ["php", "databases"],
+      "views": 670
+    },
+    {
+      "id": 15,
+      "title": "Introduction to object-oriented programming in Java",
+      "content": "Can someone explain the basics of object-oriented programming using Java?",
+      "author": "User16",
+      "date": "2023-05-28",
+      "answers": 9,
+      "score": 14,
+      "tags": ["java", "object-oriented programming"],
+      "views": 750
+    },
+    {
+      "id": 16,
+      "title": "Building a responsive navigation menu",
+      "content": "What are some techniques for creating a responsive navigation menu for websites?",
+      "author": "User25",
+      "date": "2023-05-27",
+      "answers": 5,
+      "score": 10,
+      "tags": ["web design", "navigation menu", "responsive design"],
+      "views": 480
+    },
+    {
+      "id": 17,
+      "title": "Understanding the MVC architecture",
+      "content": "Can someone explain the Model-View-Controller (MVC) architecture and its benefits?",
+      "author": "User21",
+      "date": "2023-05-25",
+      "answers": 8,
+      "score": 13,
+      "tags": ["architecture", "mvc"],
+      "views": 690
+    },
+    {
+      "id": 18,
+      "title": "Getting started with TypeScript",
+      "content": "I want to learn TypeScript. Any recommendations on how to get started?",
+      "author": "User10",
+      "date": "2023-05-24",
+      "answers": 7,
+      "score": 12,
+      "tags": ["typescript"],
+      "views": 620
+    },
+    {
+      "id": 19,
+      "title": "Common security vulnerabilities in web applications",
+      "content": "What are some common security vulnerabilities that developers should be aware of when building web applications?",
+      "author": "User24",
+      "date": "2023-05-23",
+      "answers": 10,
+      "score": 16,
+      "tags": ["security", "web development"],
+      "views": 850
+    },
+    {
+      "id": 20,
+      "title": "Optimizing images for the web",
+      "content": "What are some techniques for optimizing images to improve website performance?",
+      "author": "User15",
+      "date": "2023-05-22",
+      "answers": 4,
+      "score": 8,
+      "tags": ["web development", "image optimization"],
+      "views": 420
     }
   ]
 }
