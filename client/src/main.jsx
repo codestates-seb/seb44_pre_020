@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import Ask from "./pages/Ask.jsx";
+import Header from "./components/header/Header.jsx";
+import AskPage from "./pages/AskPage.jsx";
+import QuestionsPage from "./pages/QuestionsPage.jsx";
 import "./index.css";
 import { RecoilRoot } from "recoil";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -17,11 +19,15 @@ const router = createBrowserRouter([
       { index: true, element: <MainSearchPage /> },
       {
         path: "/ask",
-        element: <Ask />,
+        element: <AskPage />,
       },
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/questions",
+        element: <QuestionsPage />,
       },
     ],
   },
@@ -30,6 +36,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <RecoilRoot>
     <React.StrictMode>
+      <Header />
       <RouterProvider router={router} />
     </React.StrictMode>
   </RecoilRoot>

@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "title": "How to implement Redux in React?",
+      "content": "I am new to React and I'm having trouble implementing Redux. Could anyone guide me through this?",
+      "author": "User1",
+      "date": "2023-06-15",
+      "answers": 2,
+      "score": 5,
+      "tags": ["react", "redux"]
+    },
+    {
+      "id": 2,
+      "title": "What is useState in React?",
+      "content": "Can anyone explain what useState is and provide a simple example?",
+      "author": "User2",
+      "date": "2023-06-14",
+      "answers": 4,
+      "score": 10,
+      "tags": ["react", "hooks", "useState"]
+    },
+    {
+      "id": 3,
+      "title": "Difference between CSS Grid and Flexbox?",
+      "content": "What is the difference between CSS Grid and Flexbox? When should I use one over the other?",
+      "author": "User3",
+      "date": "2023-06-13",
+      "answers": 3,
+      "score": 8,
+      "tags": ["css", "grid", "flexbox"]
+    },
+    {
+      "id": 4,
+      "title": "How to use async/await in JavaScript?",
+      "content": "Can anyone provide an example of how to use async/await in JavaScript? I am a bit confused.",
+      "author": "User4",
+      "date": "2023-06-12",
+      "answers": 5,
+      "score": 9,
+      "tags": ["javascript", "async", "await"]
+    },
+    {
+      "id": 5,
+      "title": "Understanding closures in JavaScript?",
+      "content": "I'm having trouble understanding closures in JavaScript. Can anyone help?",
+      "author": "User5",
+      "date": "2023-06-11",
+      "answers": 4,
+      "score": 6,
+      "tags": ["javascript", "closure"]
+    }
+  ]
+}

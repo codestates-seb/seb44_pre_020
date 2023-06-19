@@ -6,6 +6,8 @@ export default {
       backgroundColor: {
         "ask-1": "#ebf4fb",
         "ask-2": "#f7f7f8",
+        "ask-3": "#f8f9f9",
+        tag: "rgb(225, 236, 244)",
       },
       borderColor: {
         "ask-1": "rgb(166, 206, 237)",
@@ -14,7 +16,14 @@ export default {
         "a-color": "#0a95ff",
       },
       maxWidth: {
-        "ask-page": "1264px",
+        "default-page": "1264px",
+        "question-page": "727px",
+      },
+      flex: {
+        "question-side": "0 1 300px",
+      },
+      gridTemplateColumns: {
+        "question-grid": "max-content 1fr",
       },
     },
   },
