@@ -5,7 +5,7 @@ import { writing, steps } from "../assets/strings/askStrings";
 
 const Ask = () => {
   return (
-    <div className="max-w-ask-page mx-auto my-0 px-6 mb-16 mt-14">
+    <div className="max-w-default-page mx-auto px-6 mb-16 mt-14">
       <div className="flex justify-between">
         <h1 className="text-3xl font-semibold mt-12">Ask a public question</h1>
         <img src={robot} className="mt-1.5"></img>

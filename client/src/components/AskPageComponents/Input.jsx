@@ -98,7 +98,7 @@ const Input = ({
       {isTag ? (
         <button
           type="button"
-          className="bg-sky-500 p-2.5 rounded text-white text-sm"
+          className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm"
           onClick={handleAddTag}
         >
           {btnText}
@@ -106,7 +106,7 @@ const Input = ({
       ) : (
         <button
           type="button"
-          className="bg-sky-500 p-2.5 rounded text-white text-sm"
+          className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm"
         >
           {btnText}
         </button>

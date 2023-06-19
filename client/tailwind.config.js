@@ -16,7 +16,14 @@ export default {
         "a-color": "#0a95ff",
       },
       maxWidth: {
-        "ask-page": "1264px",
+        "default-page": "1264px",
+        "question-page": "727px",
+      },
+      flex: {
+        "question-side": "0 1 300px",
+      },
+      gridTemplateColumns: {
+        "question-grid": "max-content 1fr",
       },
     },
   },

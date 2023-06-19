@@ -116,7 +116,7 @@ const Form = () => {
       <Review />
       <button
         type="submit"
-        className="bg-sky-500 p-2.5 rounded text-white text-sm"
+        className="bg-sky-500 p-2.5 rounded text-white text-sm hover:bg-sky-600"
       >
         Post your question
       </button>
