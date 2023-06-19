@@ -12,9 +12,9 @@ export default function CenterMain() {
 
   return (
     <>
-      <div>
-        <h1>Top Question</h1>
-        <button>Ask Question</button>
+      <div className=" flex justify-between pb-5 border-b-2">
+        <h1 className="text-3xl font-medium pl-5">Top Questions</h1>
+        <button className=" bg-[#1e95ff] hover:bg-[#0074CC] text-base text-white rounded-[4px] p-[10px]">Ask Question</button>
       </div>
       <MainTab />
       <section>
