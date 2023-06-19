@@ -5,7 +5,7 @@ import { FiShoppingBag } from "react-icons/fi";
 
 export default function LeftSidebar() {
   return (
-    <nav>
+    <nav className=" overflow-y-auto h-screen hide-scrollbar">
       <ol className=" m-1">
         <li className=" p-2 ">
           <div className=" text-base mb-2">Home</div>

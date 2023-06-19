@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Header from "./components/header/Header.jsx";
 import { Outlet } from "react-router-dom";
+import Footer from "./components/footer/Footer.jsx";
 
 const queryClient = new QueryClient();
 
@@ -13,6 +14,7 @@ function App() {
           <Outlet />
         </div>
       </QueryClientProvider>
+      <Footer />
     </>
   );
 }
