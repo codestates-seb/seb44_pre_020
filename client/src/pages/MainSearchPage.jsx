@@ -5,16 +5,16 @@ import RightSidebar from "../components/MainPageComponents/RightSidebar";
 
 export default function MainSearchPage() {
   return (
-    <main className=" flex w-screen">
-      <aside className=" w-2/12">
+    <div className="flex py-10">
+      <aside className="fixed w-1/12 pr-4">
         <LeftSidebar />
       </aside>
-      <article className=" w-7/12">
+      <article className="ml-[calc(1.6/12*100%)] w-9/12 border-l-2">
         <CenterMain />
       </article>
-      <aside className=" w-3/12">
+      <aside className="w-4/12 pl-7 mr-2">
         <RightSidebar />
       </aside>
-    </main>
+    </div>
   );
 }
