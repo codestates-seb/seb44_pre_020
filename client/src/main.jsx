@@ -7,7 +7,7 @@ import { RecoilRoot } from "recoil";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFound from "./components/NotFound.jsx";
 import MainSearchPage from "./pages/MainSearchPage.jsx";
-
+import LoginPage from "./pages/Login/LoginPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/ask",
         element: <Ask />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
       },
     ],
   },
