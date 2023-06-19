@@ -17,13 +17,12 @@ public class Vote {
     private Long voteId;
 
     @Column(nullable = false)
-    private int voteCnt;
+    public Long voteCnt;
 
-//    @OneToOne
-    // TODO: Map with Answer entity
+    @OneToOne
     private Answer answer;
 
     public void setAnswer(Answer answer){
-
+        this.answer = answer;
     }
 }
