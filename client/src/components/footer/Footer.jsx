@@ -2,7 +2,13 @@ import React from "react";
 
 export default function Footer() {
   const SOFIcon = () => (
-    <svg aria-hidden="true" className="native svg-icon iconLogoGlyphMd" width="32" height="37" viewBox="0 0 32 37">
+    <svg
+      aria-hidden="true"
+      className="native svg-icon iconLogoGlyphMd"
+      width="32"
+      height="37"
+      viewBox="0 0 32 37"
+    >
       <path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path>
       <path
         d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5 0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14 10.79.68-2.95-16.1-3.35L7 23l16.1 2.99ZM23 30H7v-3h16v3Z"
@@ -12,7 +18,7 @@ export default function Footer() {
   );
 
   return (
-    <footer className="flex sticky z-10 w-screen bg-[#232629] text-[#bfbfbf] text-sm py-10 px-4 mt-10">
+    <footer className="flex sticky z-10 w-screen bg-[#232629] text-[#bfbfbf] text-sm py-10 px-4 ">
       <div className="flex w-[1265px] h-[270px] max-w-[1265px] mx-auto">
         <div className=" flex gap-10">
           <div>
@@ -53,7 +59,9 @@ export default function Footer() {
               <h5 className="font-bold">STACK EXCHANGE NETWORK</h5>
               <ul className=" py-3">
                 <li className=" pb-2 text-xs opacity-75">Technology</li>
-                <li className=" pb-2 text-xs opacity-75">Culture & recreation</li>
+                <li className=" pb-2 text-xs opacity-75">
+                  Culture & recreation
+                </li>
                 <li className=" pb-2 text-xs opacity-75">Life & arts</li>
                 <li className=" pb-2 text-xs opacity-75">Science</li>
                 <li className=" pb-2 text-xs opacity-75">Professional</li>
@@ -73,7 +81,9 @@ export default function Footer() {
             </ul>
             <div className=" text-xs opacity-75 pb-7">
               <div>Site design / logo © 2023 Stack Exchange Inc; user</div>
-              <div>contributions licensed under CC BY-SA. rev 2023.6.16.43501</div>
+              <div>
+                contributions licensed under CC BY-SA. rev 2023.6.16.43501
+              </div>
             </div>
           </div>
         </div>

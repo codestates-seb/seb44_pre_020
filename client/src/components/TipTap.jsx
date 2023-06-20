@@ -144,7 +144,7 @@ const TipTap = ({ setBody, onFocus }) => {
   });
 
   return (
-    <div className="mt-4">
+    <div className="mt-5">
       <MenuBar editor={editor} />
       <EditorContent editor={editor} onFocus={onFocus} />
     </div>

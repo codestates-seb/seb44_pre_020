@@ -11,7 +11,7 @@ const Buttons = () => {
       <button className="text-5xl mb-1">
         <IoCaretUpCircleOutline />
       </button>
-      <div className="mb-1 text-xl font-medium">32</div>
+      <div className="mb-1 text-xl font-medium">(ex 32)</div>
       <button className="text-5xl mb-2">
         <IoCaretDownCircleOutline />
       </button>

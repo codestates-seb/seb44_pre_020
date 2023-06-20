@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { isFocus } from "../../Atoms/atoms";
 import { titleState, bodyState, tagsState } from "../../Atoms/atoms";
-import { postQuestion } from "../../api/askApi";
+import { postRequest } from "../../api/api";
 import {
   titleString,
   guide1,
@@ -40,6 +40,9 @@ const Form = () => {
       answers: 0,
       score: 0,
       tags: tags,
+      views: 0,
+      answerArr: [],
+      comments: [],
     };
     if (
       newQuestionData.title === "" ||
@@ -50,7 +53,7 @@ const Form = () => {
         "Title과 Body는 최소 한 글자 이상, Tag는 최소 한 개이상의 태그를 추가해주세요."
       );
     } else {
-      postQuestion(newQuestionData);
+      postRequest(newQuestionData);
       navigate("/");
     }
   };

@@ -24,3 +24,13 @@ export const tagState = atom({
   key: "tagState",
   default: "",
 });
+
+export const questionState = atom({
+  key: "questionState",
+  default: null,
+});
+
+export const commentState = atom({
+  key: "commentState",
+  default: null,
+});

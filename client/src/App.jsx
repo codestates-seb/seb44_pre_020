@@ -11,9 +11,7 @@ function App() {
     <>
       <Header />
       <QueryClientProvider client={queryClient}>
-        <div className="max-w-[1265px] mx-auto ">
-          <Outlet />
-        </div>
+        <Outlet />
       </QueryClientProvider>
       <Footer />
     </>
