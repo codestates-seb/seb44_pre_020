@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Vote {
+public class Vote <T> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long voteId;
@@ -19,11 +19,19 @@ public class Vote {
     @Column(nullable = false)
     public Long voteCnt = 0L;
 
-    @OneToOne
-    @JoinColumn(name = "ANSWER_ID")
-    private Answer answer;
+//    @OneToOne
+//    @JoinColumn(name = "ANSWER_ID")
+//    private Answer answer;
 
-    public void setAnswer(Answer answer){
-        this.answer = answer;
+    @OneToOne
+    // Todo : mapping은 각 구현체에서...
+    private T content;
+
+//    public void setAnswer(Answer answer){
+//        this.answer = answer;
+//    }
+
+    public void setContent(T content){
+        this.content = content;
     }
 }
