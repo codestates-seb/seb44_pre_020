@@ -7,6 +7,7 @@ import com.codestates.PreProject.exception.LogicalException;
 import com.codestates.PreProject.user.service.UserService;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +25,8 @@ public class AnswerService {
     }
 
     public Answer createAnswer(Answer answer) {
-        userService.findVerifiedMember(answer.getUser().getUserId());
+        userService.findVerifiedUser(answer.getUser().getUserId());
+
 
         return answerRepository.save(answer);
     }
@@ -38,16 +40,15 @@ public class AnswerService {
         answerRepository.delete(findAnswer);
     }
 
-    public Answer updateAnswer(Answer answer) {
+    public Answer updateAnswer(Answer answer, Long voteCnt) {
         Answer findAnswer = findVerifiedAnswer(answer.getAnswerId());
 
         Optional.ofNullable(answer.getContent())
                 .ifPresent(content -> findAnswer.setContent(content));
-        Optional.ofNullable(answer.getVoteCountChange())
-                .ifPresent(voteCnt -> findAnswer.getVote().setVoteCnt(voteCnt));
         Optional.ofNullable(answer.getAccepted())
                 .ifPresent(accepted -> findAnswer.setAccepted(accepted));
 
+        findAnswer.setVoteCount(answer.getVoteCount() + voteCnt);
         findAnswer.setModifiedAt(LocalDateTime.now()); // 최종 수정시간 현재 시간으로 변경
 
         return answerRepository.save(findAnswer);

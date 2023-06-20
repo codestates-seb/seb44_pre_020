@@ -10,7 +10,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-// TODO : User, Question, Vote entity Mapping Implementation
+// User, Question, Vote entity Mapping Implemented
 
 @NoArgsConstructor
 @Getter
@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Answer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answerId;
 
     @Column(nullable = false)
@@ -29,21 +30,32 @@ public class Answer {
     @Column(nullable = false, name = "LAST_MODIFIED_AT")
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
-    @ManyToOne
-    @Column(updatable = false)
-    private Question question;
+    // TODO : 차후 Question에도 JPA 적용 필요
+//    @ManyToOne
+//    @JoinColumn(name = "QUESTION_ID")
+//    private Question question;
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "VOTE_ID")
     private Vote vote;
 
+    public Answer(String content, User user) {
+        this.content = content;
+        this.user = user;
+        this.vote = new Vote();
+    }
+
     private Boolean accepted;
 
-    public Long getVoteCountChange() {
+    public Long getVoteCount() {
         return this.getVote().getVoteCnt();
+    }
+
+    public void setVoteCount(Long updateVoteCnt) {
+        this.vote.setVoteCnt(updateVoteCnt);
     }
 }

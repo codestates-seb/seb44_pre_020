@@ -11,14 +11,6 @@ import lombok.Getter;
 public class AnswerResponseDto {
     private long answerId;
     private String content;
-    private Vote vote = new Vote();
+    private long voteCnt;
     private boolean accepted;
-
-//    public void upVote(Vote vote){
-//        this.vote.setVoteCnt(vote.getVoteCnt() + 1);
-//    }
-//
-//    public void downVote(Vote vote){
-//        this.vote.setVoteCnt(vote.getVoteCnt() - 1);
-//    }
 }

@@ -17,9 +17,10 @@ public class Vote {
     private Long voteId;
 
     @Column(nullable = false)
-    public Long voteCnt;
+    public Long voteCnt = 0L;
 
     @OneToOne
+    @JoinColumn(name = "ANSWER_ID")
     private Answer answer;
 
     public void setAnswer(Answer answer){

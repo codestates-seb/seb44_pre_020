@@ -39,7 +39,7 @@ public class AnswerController {
 
     @PostMapping
     public ResponseEntity postAnswer(@Valid @RequestBody AnswerPostDto answerPostDto){
-        Answer answer = answerService.createAnswer(mapper.answerPostDtotoAnswer(answerPostDto));
+        Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(answerPostDto));
         URI location = UriCreator.createUri(ANS_DEF_URL, answer.getAnswerId());
         return ResponseEntity.created(location).build();
     }
@@ -47,7 +47,8 @@ public class AnswerController {
     @PatchMapping("/{answer-id}")
     public ResponseEntity patchAnswer(@PathVariable("answer-id") @Positive long answerId,
             @Valid @RequestBody AnswerPatchDto answerPatchDto){
-        Answer answer = answerService.updateAnswer(mapper.answerPatchDtotoAnswer(answerPatchDto));
+        Answer answer = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto),
+                answerPatchDto.getVoteCnt());
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)), HttpStatus.OK);
     }

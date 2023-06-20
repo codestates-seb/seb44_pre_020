@@ -9,15 +9,12 @@ import javax.validation.constraints.NotBlank;
 // DTO implemented
 @Getter
 public class AnswerPatchDto {
-    private long answerId;
+    private Long answerId;
 
     @NotBlank(message = "내용은 비워둘 수 없습니다.")
     @Column(nullable = false)
     private String content;
 
-    private Vote vote;
+    private Long voteCnt;
 
-    public void setVote(Vote vote) {
-        this.vote = vote;
-    }
 }
