@@ -12,7 +12,12 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
 
     public User findVerifiedUser(Long userId) {
         Optional<User> optionalUser = userRepository.findById(userId);

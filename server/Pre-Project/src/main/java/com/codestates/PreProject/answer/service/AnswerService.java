@@ -5,6 +5,7 @@ import com.codestates.PreProject.answer.repository.AnswerRepository;
 import com.codestates.PreProject.exception.ExceptionCode;
 import com.codestates.PreProject.exception.LogicalException;
 import com.codestates.PreProject.user.service.UserService;
+import com.codestates.PreProject.vote.Vote;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.Positive;
@@ -40,15 +41,19 @@ public class AnswerService {
         answerRepository.delete(findAnswer);
     }
 
-    public Answer updateAnswer(Answer answer, Long voteCnt) {
-        Answer findAnswer = findVerifiedAnswer(answer.getAnswerId());
+    public Answer updateAnswer(Answer answer, Long answerId, Long voteCnt) {
+        Answer findAnswer = findVerifiedAnswer(answerId);
 
         Optional.ofNullable(answer.getContent())
                 .ifPresent(content -> findAnswer.setContent(content));
         Optional.ofNullable(answer.getAccepted())
                 .ifPresent(accepted -> findAnswer.setAccepted(accepted));
 
-        findAnswer.setVoteCount(answer.getVoteCount() + voteCnt);
+        if (findAnswer.getVote() == null) {
+            findAnswer.setVote(new Vote());
+        }
+
+        findAnswer.setVoteCount(findAnswer.getVoteCount() + voteCnt);
         findAnswer.setModifiedAt(LocalDateTime.now()); // 최종 수정시간 현재 시간으로 변경
 
         return answerRepository.save(findAnswer);

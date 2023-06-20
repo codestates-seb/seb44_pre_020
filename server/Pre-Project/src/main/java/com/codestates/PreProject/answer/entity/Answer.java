@@ -47,12 +47,13 @@ public class Answer {
         this.content = content;
         this.user = user;
         this.vote = new Vote();
+        this.accepted = false;
     }
 
     private Boolean accepted;
 
     public Long getVoteCount() {
-        return this.getVote().getVoteCnt();
+        return this.vote.getVoteCnt();
     }
 
     public void setVoteCount(Long updateVoteCnt) {

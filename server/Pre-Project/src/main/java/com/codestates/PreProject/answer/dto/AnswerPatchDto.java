@@ -2,6 +2,7 @@ package com.codestates.PreProject.answer.dto;
 
 import com.codestates.PreProject.vote.Vote;
 import lombok.Getter;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
@@ -15,6 +16,7 @@ public class AnswerPatchDto {
     @Column(nullable = false)
     private String content;
 
-    private Long voteCnt;
+    @Range(min = -1, max = 1, message = "유효한 값은 -1 또는 1이어야 합니다.")    private Long voteCnt;
 
+    private Boolean accepted;
 }
