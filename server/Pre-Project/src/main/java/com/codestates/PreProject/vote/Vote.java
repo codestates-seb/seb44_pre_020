@@ -19,17 +19,9 @@ public class Vote <T> {
     @Column(nullable = false)
     public Long voteCnt = 0L;
 
-//    @OneToOne
-//    @JoinColumn(name = "ANSWER_ID")
-//    private Answer answer;
-
     @OneToOne
-    // Todo : mapping은 각 구현체에서...
+    // mapping은 각 구현체에서...
     private T content;
-
-//    public void setAnswer(Answer answer){
-//        this.answer = answer;
-//    }
 
     public void setContent(T content){
         this.content = content;
