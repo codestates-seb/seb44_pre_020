@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { QuestionApiState } from "../../Atoms/QuestionApiState";
 import { useQuery } from "@tanstack/react-query";
-import MainContetns from "./MainContetns";
+import MainContents from "./MainContents";
 
 export default function CenterMain() {
   const question = useRecoilValue(QuestionApiState);
@@ -13,7 +13,7 @@ export default function CenterMain() {
 
   return (
     <>
-      <MainContetns questions={questions} />
+      <MainContents questions={questions} />
     </>
   );
 }
