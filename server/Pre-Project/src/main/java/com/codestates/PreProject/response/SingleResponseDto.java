@@ -1,6 +1,5 @@
 package com.codestates.PreProject.response;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
