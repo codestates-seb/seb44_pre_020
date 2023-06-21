@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import MainTab from "./MainTab";
+import QuestionCard from "./QuestionCard";
 
-export default function MainContetns() {
+export default function MainContetns({ questions }) {
   const navigate = useNavigate();
   return (
     <>
