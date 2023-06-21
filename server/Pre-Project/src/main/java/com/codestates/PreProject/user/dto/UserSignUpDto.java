@@ -1,9 +1,12 @@
 package com.codestates.PreProject.user.dto;
 
+import lombok.Getter;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+@Getter
 public class UserSignUpDto {
     @NotBlank
     @Email
