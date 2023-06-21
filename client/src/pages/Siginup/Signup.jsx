@@ -2,6 +2,7 @@
 
 import Leftside from "./Leftside"
 import SignupButtons from "./SignupButtons"
+import SignupForm from "./SignupForm"
 
 function Signup() {
   return (
@@ -14,7 +15,7 @@ function Signup() {
         </h1>
         <SignupButtons />
         {/* <OAuthPart where="Sign up" /> */}
-        {/* <SignUpForm /> */}
+        <SignupForm />
         <p className="font-light text-xs my-1 mt-4">
           Already have an account?
           <a
