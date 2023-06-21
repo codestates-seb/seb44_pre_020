@@ -1,5 +1,6 @@
 package com.codestates.PreProject.comment.entity;
 
+import com.codestates.PreProject.user.entity.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,7 +29,7 @@ public class Comment <T>{
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
-    private Long userId;
+    private User user;
 
     @ManyToOne
     private T content;

@@ -75,7 +75,7 @@ public class UserController {
                 , HttpStatus.OK);
     }
 
-    @GetMapping("/{user-id}")
+    @GetMapping
     public ResponseEntity getUsers(){
         List<User> users = userService.findUsers();
         return new ResponseEntity<>(
