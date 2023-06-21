@@ -1,5 +1,5 @@
 package com.codestates.PreProject.user.dto;
-// Todo : dto Implementation
+// dto Implementation
 
 import com.codestates.PreProject.answer.entity.Answer;
 import lombok.Builder;
