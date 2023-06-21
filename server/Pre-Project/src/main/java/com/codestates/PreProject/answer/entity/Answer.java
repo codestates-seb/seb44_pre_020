@@ -1,5 +1,7 @@
 package com.codestates.PreProject.answer.entity;
 
+import com.codestates.PreProject.comment.entity.AnswerComment;
+import com.codestates.PreProject.comment.entity.Comment;
 import com.codestates.PreProject.question.Question;
 import com.codestates.PreProject.user.entity.User;
 import com.codestates.PreProject.vote.Vote;
@@ -9,6 +11,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 // User, Question, Vote entity Mapping Implemented
 
@@ -16,7 +20,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-public class Answer {
+public class Answer{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answerId;
@@ -34,6 +38,9 @@ public class Answer {
 //    @ManyToOne
 //    @JoinColumn(name = "QUESTION_ID")
 //    private Question question;
+
+    @OneToMany(mappedBy = "answer")
+    private List<AnswerComment> comments = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
