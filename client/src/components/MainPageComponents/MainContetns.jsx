@@ -1,19 +1,9 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
-import { QuestionApiState } from "../../Atoms/QuestionApiState";
-import { useQuery } from "@tanstack/react-query";
-import MainTab from "./MainTab";
-import QuestionCard from "./QuestionCard";
 import { useNavigate } from "react-router-dom";
+import MainTab from "./MainTab";
 
-export default function CenterMain() {
-  const question = useRecoilValue(QuestionApiState);
-  const { hasNextPage, fetchNextPage, isLoading, error, data: questions } = useQuery(["questions"], () => question.search());
+export default function MainContetns() {
   const navigate = useNavigate();
-
-  if (isLoading) return <p>Loading...</p>;
-  else if (error) return <p>Error...</p>;
-
   return (
     <>
       <div className=" flex flex-col pb-4 border-b-2">
@@ -30,7 +20,6 @@ export default function CenterMain() {
           <MainTab />
         </div>
       </div>
-
       <div>
         {questions && (
           <ul>

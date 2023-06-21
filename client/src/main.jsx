@@ -16,14 +16,14 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <NotFound />,
     children: [
-      { index: true, element: <LoginPage /> },
+      { index: true, element: <MainSearchPage /> },
       {
         path: "/ask",
         element: <AskPage />,
       },
       {
-        path: "/home",
-        element: <MainSearchPage />,
+        path: "/login",
+        element: <LoginPage />,
       },
       {
         path: "/questions/:id",
