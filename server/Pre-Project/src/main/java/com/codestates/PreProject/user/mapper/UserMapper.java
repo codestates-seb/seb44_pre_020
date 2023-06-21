@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-// Todo: Interface mapper implementation
+// Interface mapper implemented
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {

@@ -1,7 +1,4 @@
 package com.codestates.PreProject.user.service;
-
-// Todo : user Service layer Implementation
-
 import com.codestates.PreProject.exception.ExceptionCode;
 import com.codestates.PreProject.exception.LogicalException;
 import com.codestates.PreProject.user.entity.User;
@@ -9,6 +6,7 @@ import com.codestates.PreProject.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.Positive;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,9 +36,20 @@ public class UserService {
             throw new LogicalException(ExceptionCode.USER_EXISTS);
     }
 
-    // TODO : updateAnswer implementation
-    public User updateAnswer(User userPatchDtoToUser, @Positive long userId) {
-        return null;
+    // update implemented
+    public User updateUser(User user, @Positive long userId) {
+        User findUser = findVerifiedUser(userId);
+
+        Optional.ofNullable(user.getAnswers())
+                .ifPresent(findUser::setAnswers);
+        Optional.ofNullable(user.getEmail())
+                .ifPresent(findUser::setEmail);
+
+        if (findUser.getAnswers() == null){
+            findUser.setAnswers(new ArrayList<>());
+        }
+
+        return userRepository.save(findUser);
     }
 
     public List<User> findUsers() {

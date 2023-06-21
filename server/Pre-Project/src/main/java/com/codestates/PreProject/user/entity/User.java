@@ -18,21 +18,36 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+    @Column(nullable = false, unique = true)
+    private String username;
 
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false, unique = true)
+    private String phoneNumber;
+
+
+    @Column(nullable = false)
+    private String password;
+
     @Column(nullable = false, name = "CREATED_AT")
     private LocalDateTime createdAt = LocalDateTime.now();
-
-    @Column(nullable = false, name = "LAST_MODIFIED_AT")
-    private LocalDateTime modifiedAt = LocalDateTime.now();
 
     @OneToMany(mappedBy = "user")
     private List<Answer> answers = new ArrayList<>();
 
+    public User(String email, String phoneNumber, String username, String password) {
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.answers = new ArrayList<>();
+    }
+
     public User(String email){
         this.email = email;
+        this.answers = new ArrayList<>();
     }
 
     public void addAnswer(Answer answer){

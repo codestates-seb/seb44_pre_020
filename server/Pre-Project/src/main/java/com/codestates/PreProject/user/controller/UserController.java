@@ -60,7 +60,7 @@ public class UserController {
     @PatchMapping("/{user-id}")
     public ResponseEntity patchUser(@PathVariable("user-id") @Positive long userId,
                                     @Valid @RequestBody UserPatchDto userPatchDto){
-        User user = userService.updateAnswer(
+        User user = userService.updateUser(
                 mapper.userPatchDtoToUser(userPatchDto),
                 userId);
         return new ResponseEntity<>(
