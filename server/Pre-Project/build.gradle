@@ -32,6 +32,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+	implementation 'mysql:mysql-connector-java:8.0.33' // 사용하는 MySQL 버전에 맞는 버전으로 변경
 }
 
 tasks.named('test') {

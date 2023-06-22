@@ -40,7 +40,7 @@ public class AnswerController {
     @PostMapping
     public ResponseEntity postAnswer(@Valid @RequestBody AnswerPostDto answerPostDto){
         Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(answerPostDto));
-        URI location = UriCreator.createUri(ANS_DEF_URL, answer.getAnswerId());
+        URI location = UriCreator.createUri(ANS_DEF_URL, answer.getId());
         return ResponseEntity.created(location).build();
     }
 
