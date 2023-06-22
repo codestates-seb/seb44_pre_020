@@ -1,38 +1,38 @@
-import { useRecoilState } from "recoil";
-import { bodyState } from "../../Atoms/atoms";
-import TipTap from "../TipTap";
-import { postRequest } from "../../api/api";
+import { useState } from "react";
+import { patchRequest } from "../../api/api";
 import { year, formattedMonth, formattedDay } from "../../assets/strings/date";
+import TipTap from "../TipTap";
 
-const Edit = ({ handleEditClick }) => {
-  const [body, setBody] = useRecoilState(bodyState);
+const Edit = ({ isEditOpen, setIsEditOpen }) => {
+  const randomData = "haha";
 
+  const [editedBody, setEditedBody] = useState(randomData);
+
+  // 6. 질문 및 답변 patch 요청
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const newData = {
-      id: 0,
-      content: body,
-      author: "",
+    const newEditedData = {
+      body: editedBody,
       date: `${year}-${formattedMonth}-${formattedDay}`,
-      score: 0,
     };
-    if (newData.content === "") {
+    if (newEditedData.body === "") {
       alert("최소 한 글자이상을 작성해주세요.");
     } else {
-      postRequest(newData);
+      patchRequest(
+        "https://9eafe059-f15b-42b9-8571-1c6297da44fa.mock.pstmn.io/",
+        newEditedData
+      );
+      setIsEditOpen(!isEditOpen);
     }
   };
 
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
-        <TipTap setBody={setBody} />
+        <TipTap setBody={setEditedBody} content={randomData} />
         <div className="flex justify-end">
-          <button
-            onClick={handleEditClick}
-            className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm"
-          >
+          <button className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm">
             Complete!
           </button>
         </div>

@@ -1,5 +1,10 @@
 import { useRecoilState } from "recoil";
-import { tagsState, tagState, bodyState } from "../../Atoms/atoms";
+import { useState } from "react";
+import {
+  tagsState,
+  questionBodyState,
+  questionTitleState,
+} from "../../Atoms/atoms";
 import { availableTags } from "../../assets/arrays";
 import { removeBtn } from "../../assets/img/img";
 import TipTap from "../TipTap";
@@ -13,13 +18,14 @@ const Input = ({
   onFocus,
   isBody,
   isTitle,
-  value,
-  onChange,
   isTag,
+  // value,
+  // onChange,
 }) => {
+  const [questionTitle, setQuestionTitle] = useRecoilState(questionTitleState);
+  const [questionBody, setQuestionBody] = useRecoilState(questionBodyState);
   const [tags, setTags] = useRecoilState(tagsState);
-  const [tag, setTag] = useRecoilState(tagState);
-  const [body, setBody] = useRecoilState(bodyState);
+  const [tag, setTag] = useState("");
 
   const handleTagSelection = (e) => {
     setTag(e.target.value);
@@ -43,7 +49,7 @@ const Input = ({
       <p className="mb-1 text-xs">{text}</p>
       {isBody ? (
         <div>
-          <TipTap setBody={setBody} onFocus={onFocus} />
+          <TipTap setBody={setQuestionBody} onFocus={onFocus} />
         </div>
       ) : isTitle ? (
         <input
@@ -51,17 +57,11 @@ const Input = ({
           placeholder={placeHolder}
           className={`${height} w-full border-solid border rounded py-1 pl-2.5 border-slate-400 placeholder:text-slate-300 placeholder:text-sm mb-2.5`}
           onFocus={onFocus}
-          value={value}
-          onChange={onChange}
+          value={questionTitle}
+          onChange={(e) => setQuestionTitle(e.target.value)}
         ></input>
       ) : (
         <div>
-          <input
-            type="text"
-            placeholder={placeHolder}
-            className={`${height} w-full border-solid border rounded py-1 pl-2.5 border-slate-400 placeholder:text-slate-300 placeholder:text-sm mb-2.5 hidden`}
-            value={tags}
-          ></input>
           <div className="mb-4 mt-4 border-solid border rounded p-3">
             {tags.map((tag) => (
               <span

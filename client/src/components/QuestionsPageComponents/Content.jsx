@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { deleteRequest } from "../../api/api";
 import Edit from "./Edit";
 import yoda from "../../assets/img/yoda1.jpg";
 
@@ -7,6 +8,18 @@ const Content = () => {
 
   const handleEditClick = () => {
     setIsEditOpen(!isEditOpen);
+  };
+
+  // 7. 질문 및 답변 delete 요청 (바로 업데이트가 안되면, 질문이나 답변 props로 받아와서 상태갱신?)
+
+  const handleDeleteClick = async () => {
+    try {
+      await deleteRequest(
+        "https://7824fe4c-db17-4a35-8a83-3480e0f32f69.mock.pstmn.io"
+      );
+    } catch (err) {
+      console.error("Error:", err);
+    }
   };
 
   return (
@@ -27,7 +40,9 @@ const Content = () => {
           <button onClick={handleEditClick} className="mr-2">
             Edit
           </button>
-          <button className="mr-2">Delete</button>
+          <button onClick={handleDeleteClick} className="mr-2">
+            Delete
+          </button>
           {/* 작성자일때만 활성화 */}
         </div>
         <div className="bg-blue-200 p-1.5 rounded w-52">
@@ -44,7 +59,9 @@ const Content = () => {
           </div>
         </div>
       </div>
-      {isEditOpen && <Edit handleEditClick={handleEditClick} />}
+      {isEditOpen && (
+        <Edit isEditOpen={isEditOpen} setIsEditOpen={setIsEditOpen} />
+      )}
     </div>
   );
 };

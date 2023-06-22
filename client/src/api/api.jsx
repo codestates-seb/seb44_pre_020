@@ -1,21 +1,36 @@
 import axios from "axios";
 
-export const postRequest = async (data) => {
+export const postRequest = async (url, data) => {
   try {
-    const res = await axios.post(
-      "https://032b9d6f-98f0-429c-ae1e-76363c379d20.mock.pstmn.io",
-      data
-    );
+    const res = await axios.post(url, data);
     console.log(res);
   } catch (err) {
     console.error("Error:", err);
   }
 };
 
-export const getRequest = async () => {
+export const getRequest = async (url) => {
   try {
-    const res = await axios.get("/mockupdata/questions.json");
+    const res = await axios.get(url);
     return res.data;
+  } catch (err) {
+    console.error("Error:", err);
+  }
+};
+
+export const patchRequest = async (url, data) => {
+  try {
+    const res = await axios.patch(url, data);
+    console.log(res);
+  } catch (err) {
+    console.error("Error:", err);
+  }
+};
+
+export const deleteRequest = async (url) => {
+  try {
+    const res = await axios.delete(url);
+    console.log(res);
   } catch (err) {
     console.error("Error:", err);
   }

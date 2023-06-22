@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { bodyState, questionState } from "../Atoms/atoms";
+import { questionDataState } from "../Atoms/atoms";
 import Title from "../components/QuestionsPageComponents/Title";
 import Question from "../components/QuestionsPageComponents/Question";
 import TipTap from "../components/TipTap";
@@ -7,42 +7,49 @@ import RightSidebar from "../components/MainPageComponents/RightSidebar";
 import LeftSidebar from "../components/MainPageComponents/LeftSidebar";
 import { formattedMonth, year, formattedDay } from "../assets/strings/date";
 import { postRequest, getRequest } from "../api/api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const QuestionsPage = () => {
-  const [body, setBody] = useRecoilState(bodyState);
-  const [questionInfo, setQuestionInfo] = useRecoilState(questionState);
+  const [answerBody, setAnswerBody] = useState("");
+  const [questionData, setQuestionData] = useRecoilState(questionDataState);
+  const { questionId } = useParams();
+
+  // 2. 질문, 답변 get request (also tags or not)
+  // 3. 답변 post request
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await getRequest();
-        setQuestionInfo(res);
+        const res = await getRequest("/mockupdata/questions.json"); // questionId 이용해서, get 요청 보내기
+        setQuestionData(res);
       } catch (err) {
         console.error("Error:", err);
       }
     };
 
     fetchData();
-  }, [setQuestionInfo]);
-
-  console.log(questionInfo);
+  }, [setQuestionData]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     const newAnswerData = {
       id: 0,
-      content: body,
+      content: answerBody,
       author: "",
       date: `${year}-${formattedMonth}-${formattedDay}`,
       score: 0,
       comment: [],
     };
+
     if (newAnswerData.content === "") {
       alert("최소 한 글자이상을 작성해주세요.");
     } else {
-      postRequest(newAnswerData);
+      postRequest(
+        "https://032b9d6f-98f0-429c-ae1e-76363c379d20.mock.pstmn.io/",
+        newAnswerData
+      );
     }
   };
 
@@ -66,7 +73,7 @@ const QuestionsPage = () => {
 
               <form onSubmit={handleFormSubmit} className="mt-6">
                 <h3 className="text-2xl">Your Answer</h3>
-                <TipTap setBody={setBody} />
+                <TipTap setBody={setAnswerBody} />
                 <button className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm">
                   Post Your Answer
                 </button>

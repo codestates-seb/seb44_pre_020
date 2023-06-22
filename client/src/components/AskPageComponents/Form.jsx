@@ -1,7 +1,11 @@
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import { isFocus } from "../../Atoms/atoms";
-import { titleState, bodyState, tagsState } from "../../Atoms/atoms";
+import { useState } from "react";
+import {
+  questionTitleState,
+  questionBodyState,
+  tagsState,
+} from "../../Atoms/atoms";
 import { postRequest } from "../../api/api";
 import {
   titleString,
@@ -19,22 +23,24 @@ import Review from "./Review";
 
 const Form = () => {
   const navigate = useNavigate();
-  const [isInputFocused, setIsInputFocused] = useRecoilState(isFocus);
-  const [title, setTitle] = useRecoilState(titleState);
-  const [body, setBody] = useRecoilState(bodyState);
+  const [isInputFocused, setIsInputFocused] = useState("input1");
+  const [questionTitle, setQuestionTitle] = useRecoilState(questionTitleState);
+  const [questionBody, setQuestionBody] = useRecoilState(questionBodyState);
   const [tags, setTags] = useRecoilState(tagsState);
 
   const handleInputFocus = (inputId) => {
     setIsInputFocused(inputId);
   };
 
+  // 1. 질문 post요청 (at once or more than one request)
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const newQuestionData = {
+    const postQuestionData = {
       id: 0,
-      title: title,
-      content: body,
+      title: questionTitle,
+      content: questionBody,
       author: "",
       date: `${year}-${formattedMonth}-${formattedDay}`,
       answers: 0,
@@ -45,15 +51,18 @@ const Form = () => {
       comments: [],
     };
     if (
-      newQuestionData.title === "" ||
-      newQuestionData.content === "" ||
+      postQuestionData.title === "" ||
+      postQuestionData.content === "" ||
       tags.length === 0
     ) {
       alert(
         "Title과 Body는 최소 한 글자 이상, Tag는 최소 한 개이상의 태그를 추가해주세요."
       );
     } else {
-      postRequest(newQuestionData);
+      postRequest(
+        "https://032b9d6f-98f0-429c-ae1e-76363c379d20.mock.pstmn.io/",
+        postQuestionData
+      );
       navigate("/");
     }
   };
@@ -68,8 +77,6 @@ const Form = () => {
           btnText={titleString.text3}
           isTitle={true}
           onFocus={() => handleInputFocus("input1")}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
         />
         {isInputFocused === "input1" && (
           <Guide
