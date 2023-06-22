@@ -4,7 +4,7 @@ import com.codestates.PreProject.answer.entity.Answer;
 import com.codestates.PreProject.answer.repository.AnswerRepository;
 import com.codestates.PreProject.exception.ExceptionCode;
 import com.codestates.PreProject.exception.LogicalException;
-import com.codestates.PreProject.member.service.MemberService;
+import com.codestates.PreProject.user.service.UserService;
 import com.codestates.PreProject.vote.Vote;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +18,16 @@ import java.util.Optional;
 @Service
 public class AnswerService {
     private final AnswerRepository answerRepository;
-    private final MemberService memberService;
+    private final UserService userService;
 
-    public AnswerService(AnswerRepository answerRepository, MemberService memberService) {
+    public AnswerService(AnswerRepository answerRepository, UserService userService) {
         this.answerRepository = answerRepository;
-        this.memberService = memberService;
+        this.userService = userService;
     }
 
     public Answer createAnswer(Answer answer) {
-        MemberService.findVerifiedMember(answer.getMember().getMemberId());
+        userService.findVerifiedUser(answer.getUser().getUserId());
+
 
         return answerRepository.save(answer);
     }

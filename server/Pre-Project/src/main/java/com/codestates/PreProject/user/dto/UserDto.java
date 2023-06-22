@@ -1,6 +1,6 @@
-package com.codestates.PreProject.member.dto;
+package com.codestates.PreProject.user.dto;
 
-import com.codestates.PreProject.member.entity.Member;
+import com.codestates.PreProject.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -8,7 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-public class MemberDto {
+public class UserDto {
     @Getter
     @AllArgsConstructor
     public static class Post {
@@ -30,7 +30,7 @@ public class MemberDto {
     @Getter
     @AllArgsConstructor
     public static class Patch {
-        private long MemberId;
+        private long userId;
 
 //        @NotSpace(message = "회원 이름은 공백이 아니어야 합니다.")
         private String name;
@@ -40,11 +40,11 @@ public class MemberDto {
                 message = "휴대폰 번호는 010으로 시작하는 11자리 숫자와 '-'로 구성되어야 합니다")
         private String phone;
 
-        private Member.MemberStatus memberStatus;
+        private User.UserStatus userStatus;
 
 
-        public void setMemberId(long MemberId) {
-            this.MemberId = MemberId;
+        public void setUserId(long userId) {
+            this.userId = userId;
         }
     }
 
@@ -55,10 +55,10 @@ public class MemberDto {
         private String email;
         private String name;
         private String phone;
-        private Member.MemberStatus memberStatus;
+        private User.UserStatus userStatus;
 
-        public String getMemberStatus() {
-            return memberStatus.getStatus();
+        public String getUserStatus() {
+            return userStatus.getStatus();
         }
     }
 }

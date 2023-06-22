@@ -3,13 +3,13 @@ package com.codestates.PreProject.exception;
 import lombok.Getter;
 
 public enum ExceptionCode {
-    MEMBER_NOT_FOUND(404, "Member not found"),
+//    MEMBER_NOT_FOUND(404, "Member not found"),
 //    MEMBER_EXISTS(409, "Member exists"),
     QUESTION_NOT_FOUND(404, "Question not found"),
 //    QUESTION_CODE_EXISTS(409, "Question Code exists");
     ANSWER_NOT_FOUND(404, "Member not found"),
-    Member_NOT_FOUND(404, "Member not found"),
-    Member_EXISTS(409, "Member already exists");
+    USER_NOT_FOUND(404, "User not found"),
+    USER_EXISTS(409, "User already exists");
     
 
     ExceptionCode(int status, String msg) {

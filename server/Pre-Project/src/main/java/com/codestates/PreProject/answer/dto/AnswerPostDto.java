@@ -2,7 +2,7 @@ package com.codestates.PreProject.answer.dto;
 
 // DTO implemented
 
-import com.codestates.PreProject.member.entity.Member;
+import com.codestates.PreProject.user.entity.User;
 import lombok.Getter;
 
 import javax.validation.Valid;
@@ -16,11 +16,11 @@ public class AnswerPostDto {
 
     @Valid
     @Positive
-    private long MemberId;
+    private long userId;
 
-    public Member getMember(){
-        Member member = new Member();
-        member.setMemberId(getMemberId());
-        return member;
+    public User getUser(){
+        User user = new User();
+        user.setUserId(userId);
+        return user;
     }
 }

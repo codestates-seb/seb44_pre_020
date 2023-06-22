@@ -1,4 +1,4 @@
-package com.codestates.PreProject.config;
+package com.codestates.PreProject.config.config;
 
 import com.codestates.PreProject.auth.filter.JwtAuthenticationFilter;
 import com.codestates.PreProject.auth.jwt.JwtTokenizer;
@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,13 +19,14 @@ import java.util.Arrays;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
-
+@Configuration
 public class SecurityConfiguration {
     private final JwtTokenizer jwtTokenizer;
 
     public SecurityConfiguration(JwtTokenizer jwtTokenizer) {
         this.jwtTokenizer = jwtTokenizer;
     }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -34,42 +36,38 @@ public class SecurityConfiguration {
                 .cors(withDefaults())
                 .formLogin().disable()
                 .httpBasic().disable()
-                .apply(new CustomFilterConfigurer())
+                .apply(new CustomFilterConfigurer())   // (1)
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().permitAll()
                 );
         return http.build();
     }
-
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST", "PATCH", "DELETE"));
-
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 
-    public class CustomFilterConfigurer extends AbstractHttpConfigurer<CustomFilterConfigurer, HttpSecurity> {
+    // (2)
+    public class CustomFilterConfigurer extends AbstractHttpConfigurer<CustomFilterConfigurer, HttpSecurity> {  // (2-1)
         @Override
-        public void configure(HttpSecurity builder) throws Exception {
-            AuthenticationManager authenticationManager = builder.getSharedObject(AuthenticationManager.class);
+        public void configure(HttpSecurity builder) throws Exception {  // (2-2)
+            AuthenticationManager authenticationManager = builder.getSharedObject(AuthenticationManager.class);  // (2-3)
 
-            JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager, jwtTokenizer); 
-            jwtAuthenticationFilter.setFilterProcessesUrl("/v11/auth/login"); 
+            JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager, jwtTokenizer);  // (2-4)
+            jwtAuthenticationFilter.setFilterProcessesUrl("/v11/auth/login");          // (2-5)
 
-            builder.addFilter(jwtAuthenticationFilter); 
+            builder.addFilter(jwtAuthenticationFilter);  // (2-6)
         }
-        
     }
 }

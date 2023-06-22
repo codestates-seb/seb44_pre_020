@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 public class QuestionPatchDto {
-    private long memberId;
+    private long userId;
     private long questionId;
 
     @NotBlank(message = "제목을 입력하세요")

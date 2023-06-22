@@ -3,8 +3,8 @@ package com.codestates.PreProject.auth.userdetails;
 import com.codestates.PreProject.auth.utils.CustomAuthorityUtils;
 import com.codestates.PreProject.exception.BusinessLogicException;
 import com.codestates.PreProject.exception.ExceptionCode;
-import com.codestates.PreProject.member.entity.Member;
-import com.codestates.PreProject.member.repository.MemberRepository;
+import com.codestates.PreProject.user.entity.User;
+import com.codestates.PreProject.user.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,30 +15,31 @@ import java.util.Collection;
 import java.util.Optional;
 
 @Component
-public class MemberDetailsService implements UserDetailsService {
-    private final MemberRepository memberRepository;
+public class UserDetailsServices implements UserDetailsService {
+    private final UserRepository userRepository;
     private final CustomAuthorityUtils authorityUtils;
 
-    public MemberDetailsService(MemberRepository memberRepository, CustomAuthorityUtils authorityUtils) {
+    public UserDetailsServices(UserRepository userRepository, CustomAuthorityUtils authorityUtils) {
         this.authorityUtils = authorityUtils;
-        this.memberRepository = memberRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Member> optionalMember = MemberRepository.findByEmail(username);
-        Member findMember = optionalMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+    public org.springframework.security.core.userdetails.UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> optionalUser = userRepository.findByEmail(username);
+        User findUser = optionalUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
-        return new MemberDetails(findMember);
+        return new UserDetails(findUser);
     }
 
-    private final class MemberDetails extends Member implements UserDetails {
-        MemberDetails(Member member) {
-            setMemberId(member.getMemberId());
-            setEmail(member.getEmail());
-            setPassword(member.getPassword());
-            setRoles(member.getRoles());
+    private final class UserDetails extends User implements org.springframework.security.core.userdetails.UserDetails {
+        UserDetails(User user) {
+            setUserId(user.getUserId());
+            setEmail(user.getEmail());
+            setPassword(user.getPassword());
+            setRoles(user.getRoles());
         }
+
 
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {

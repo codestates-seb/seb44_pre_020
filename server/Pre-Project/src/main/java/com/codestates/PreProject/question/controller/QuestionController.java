@@ -53,8 +53,8 @@ public class QuestionController {
 
     // TODO 질문 추천
     @PostMapping("/questions/likevote/{question-id}")
-    public ResponseEntity setLikeVote(@PathVariable("question-id") long questionId, @Positive @RequestParam long memberId) {
-        questionService.setLikeVote(questionId, memberId);
+    public ResponseEntity setLikeVote(@PathVariable("question-id") long questionId, @Positive @RequestParam long userId) {
+        questionService.setLikeVote(questionId, userId);
 
         return new ResponseEntity(new SingleResponseDto<>(questionService.getVoteCount(questionId)), HttpStatus.OK);
     }

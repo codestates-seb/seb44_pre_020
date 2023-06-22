@@ -1,7 +1,7 @@
 package com.codestates.PreProject.answer.entity;
 
 //import com.codestates.PreProject.comment.entity.AnswerComment;
-import com.codestates.PreProject.member.entity.Member;
+import com.codestates.PreProject.user.entity.User;
 import com.codestates.PreProject.vote.Vote;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-// Member, Question, Vote entity Mapping Implemented
+// User, Question, Vote entity Mapping Implemented
 
 @NoArgsConstructor
 @Getter
@@ -41,16 +41,16 @@ public class Answer{
 //    private List<AnswerComment> comments = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "member_ID")
-    private Member member;
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "VOTE_ID")
     private Vote vote;
 
-    public Answer(String content, Member Member) {
+    public Answer(String content, User user) {
         this.content = content;
-        this.member = member;
+        this.user = user;
         this.vote = new Vote();
         this.accepted = false;
     }

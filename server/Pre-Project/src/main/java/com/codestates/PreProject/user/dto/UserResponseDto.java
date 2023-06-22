@@ -1,4 +1,4 @@
-package com.codestates.PreProject.member.dto;
+package com.codestates.PreProject.user.dto;
 // dto Implementation
 
 import com.codestates.PreProject.answer.entity.Answer;
@@ -9,12 +9,12 @@ import java.util.List;
 
 @Builder
 @Getter
-public class MemberResponseDto {
-    private Long MemberId;
-    private String Membername;
+public class UserResponseDto {
+    private Long userId;
+    private String username;
     private String phoneNumber;
     private List<Answer> answers;
-    public void setMemberId(long MemberId){
-        this.MemberId = MemberId;
+    public void setUserId(long userId){
+        this.userId = userId;
     }
 }

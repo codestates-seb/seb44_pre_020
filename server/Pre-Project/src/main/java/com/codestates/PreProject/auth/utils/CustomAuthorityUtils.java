@@ -14,17 +14,17 @@ public class CustomAuthorityUtils {
     @Value("${mail.address.admin}")
     private String adminMailAddress;
 
-    private final List<GrantedAuthority> ADMIN_ROLES = AuthorityUtils.createAuthorityList("ROLE_ADMIN", "ROLE_Member");
-    private final List<GrantedAuthority> Member_ROLES = AuthorityUtils.createAuthorityList("ROLE_Member");
-    private final List<String> ADMIN_ROLES_STRING = List.of("ADMIN", "Member");
-    private final List<String> Member_ROLES_STRING = List.of("Member");
+    private final List<GrantedAuthority> ADMIN_ROLES = AuthorityUtils.createAuthorityList("ROLE_ADMIN", "ROLE_USER");
+    private final List<GrantedAuthority> USER_ROLES = AuthorityUtils.createAuthorityList("ROLE_USER");
+    private final List<String> ADMIN_ROLES_STRING = List.of("ADMIN", "USER");
+    private final List<String> USER_ROLES_STRING = List.of("USER");
 
     // 메모리 상의 Role을 기반으로 권한 정보 생성.
     public List<GrantedAuthority> createAuthorities(String email) {
         if (email.equals(adminMailAddress)) {
             return ADMIN_ROLES;
         }
-        return Member_ROLES;
+        return USER_ROLES;
     }
 
     // DB에 저장된 Role을 기반으로 권한 정보 생성
@@ -40,6 +40,6 @@ public class CustomAuthorityUtils {
         if (email.equals(adminMailAddress)) {
             return ADMIN_ROLES_STRING;
         }
-        return Member_ROLES_STRING;
+        return USER_ROLES_STRING;
     }
 }

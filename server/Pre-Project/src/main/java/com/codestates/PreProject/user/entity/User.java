@@ -1,4 +1,4 @@
-package com.codestates.PreProject.member.entity;
+package com.codestates.PreProject.user.entity;
 
 
 import com.codestates.PreProject.answer.entity.Answer;
@@ -14,13 +14,13 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "members")
-public class Member {
+@Entity(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberId;
+    private Long userId;
     @Column(nullable = false, unique = true)
-    private String memberName;
+    private String username;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -35,7 +35,7 @@ public class Member {
     @Column(nullable = false, name = "CREATED_AT")
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "user")
     private List<Answer> answers = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -43,17 +43,17 @@ public class Member {
 
     @Enumerated(value = EnumType.STRING)
     @Column(length = 20, nullable = false)
-    private MemberStatus memberStatus = MemberStatus.MEMBER_ACTIVE;
+    private UserStatus userStatus = UserStatus.USER_ACTIVE;
 
-    public Member(String email, String phoneNumber, String memberName, String password) {
+    public User(String email, String phoneNumber, String username, String password) {
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.memberName = memberName;
+        this.username = username;
         this.password = password;
         this.answers = new ArrayList<>();
     }
 
-    public Member(String email){
+    public User(String email){
         this.email = email;
         this.answers = new ArrayList<>();
     }
@@ -62,15 +62,15 @@ public class Member {
         answers.add(answer);
     }
 
-    public enum MemberStatus {
-        MEMBER_ACTIVE("활동중"),
-        MEMBER_SLEEP("휴면 상태"),
-        MEMBER_QUIT("탈퇴 상태");
+    public enum UserStatus {
+        USER_ACTIVE("활동중"),
+        USER_SLEEP("휴면 상태"),
+        USER_QUIT("탈퇴 상태");
 
         @Getter
         private String status;
 
-        MemberStatus(String status) {
+        UserStatus(String status) {
             this.status = status;
         }
     }

@@ -2,13 +2,13 @@ package com.codestates.PreProject.auth.filter;
 
 import com.codestates.PreProject.auth.dto.LoginDto;
 import com.codestates.PreProject.auth.jwt.JwtTokenizer;
-import com.codestates.PreProject.Member.entity.Member;
+import com.codestates.PreProject.user.entity.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.MembernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.MembernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JwtAuthenticationFilter extends MembernamePasswordAuthenticationFilter {
+public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenizer jwtTokenizer;
 
@@ -28,6 +28,7 @@ public class JwtAuthenticationFilter extends MembernamePasswordAuthenticationFil
     }
 
     // (3)
+
     @SneakyThrows
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
@@ -35,34 +36,34 @@ public class JwtAuthenticationFilter extends MembernamePasswordAuthenticationFil
         ObjectMapper objectMapper = new ObjectMapper();
         LoginDto loginDto = objectMapper.readValue(request.getInputStream(), LoginDto.class);
 
-        MembernamePasswordAuthenticationToken authenticationToken =
-                new MembernamePasswordAuthenticationToken(loginDto.getMembername(), loginDto.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
 
-        return authenticationManager.authenticate(authenticationToken);
+        return authenticationManager.authenticate(authenticationToken);  // (3-4)
     }
 
-    // (4)
+
     @Override
     protected void successfulAuthentication(HttpServletRequest request,
                                             HttpServletResponse response,
                                             FilterChain chain,
                                             Authentication authResult) {
-        Member Member = (Member) authResult.getPrincipal();
+        User user = (User) authResult.getPrincipal();  // (4-1)
 
-        String accessToken = delegateAccessToken(Member);
-        String refreshToken = delegateRefreshToken(Member);
+        String accessToken = delegateAccessToken(user);   // (4-2)
+        String refreshToken = delegateRefreshToken(user); // (4-3)
 
-        response.setHeader("Authorization", "Bearer " + accessToken);
-        response.setHeader("Refresh", refreshToken);
+        response.setHeader("Authorization", "Bearer " + accessToken);  // (4-4)
+        response.setHeader("Refresh", refreshToken);                   // (4-5)
     }
 
     // (5)
-    private String delegateAccessToken(Member Member) {
+    private String delegateAccessToken(User user) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("Membername", Member.getEmail());
-        claims.put("roles", Member.getRoles());
+        claims.put("username", user.getEmail());
+        claims.put("roles", user.getRoles());
 
-        String subject = Member.getEmail();
+        String subject = user.getEmail();
         Date expiration = jwtTokenizer.getTokenExpiration(jwtTokenizer.getAccessTokenExpirationMinutes());
 
         String base64EncodedSecretKey = jwtTokenizer.encodeBase64SecretKey(jwtTokenizer.getSecretKey());
@@ -73,8 +74,8 @@ public class JwtAuthenticationFilter extends MembernamePasswordAuthenticationFil
     }
 
     // (6)
-    private String delegateRefreshToken(Member Member) {
-        String subject = Member.getEmail();
+    private String delegateRefreshToken(User user) {
+        String subject = user.getEmail();
         Date expiration = jwtTokenizer.getTokenExpiration(jwtTokenizer.getRefreshTokenExpirationMinutes());
         String base64EncodedSecretKey = jwtTokenizer.encodeBase64SecretKey(jwtTokenizer.getSecretKey());
 

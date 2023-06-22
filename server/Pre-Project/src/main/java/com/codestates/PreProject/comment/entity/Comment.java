@@ -27,8 +27,8 @@
 //    private LocalDateTime createdAt = LocalDateTime.now();
 //
 ////    @ManyToOne
-////    @JoinColumn(name = "Member_ID")
-////    private Long MemberId;
+////    @JoinColumn(name = "USER_ID")
+////    private Long userId;
 ////
 ////    @ManyToOne
 ////    private T content;

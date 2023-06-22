@@ -1,6 +1,6 @@
 package com.codestates.PreProject.question.entity;
 
-import com.codestates.PreProject.member.entity.Member;
+import com.codestates.PreProject.user.entity.User;
 import com.codestates.PreProject.vote.Vote;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,8 +43,8 @@ public class Question {
     private long voteCount;
 
     @ManyToOne
-    @JoinColumn(name = "member_ID")
-    private Member member;
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "VOTE_ID")
