@@ -18,15 +18,17 @@ export default function QuestionCard({ question }) {
         <span className=" p-1 opacity-50">{views} views</span>
       </div>
       <div className=" flex flex-grow flex-col">
-        <div onClick={moveToQuestionPage} className=" text-xl text-[#0074CC] cursor-pointer">
+        <div onClick={moveToQuestionPage} className=" text-xl text-[#0074CC] cursor-pointer mb-2">
           {title}
         </div>
-        <div className=" flex justify-end flex-grow text-sm p-2 mr-2">
+        <div className=" flex justify-between mr-2 mt-1">
           <Tags tags={tags} />
-          <span className=" mr-3">{author}</span>
-          <span onClick={moveToQuestionPage} className=" text-[#0074CC] cursor-pointer">
-            {formatAgo(date)}
-          </span>
+          <div className=" flex text-sm p-2 mr-2">
+            <span className=" mr-3">{author}</span>
+            <span onClick={moveToQuestionPage} className=" text-[#0074CC] cursor-pointer">
+              {formatAgo(date)}
+            </span>
+          </div>
         </div>
       </div>
     </li>

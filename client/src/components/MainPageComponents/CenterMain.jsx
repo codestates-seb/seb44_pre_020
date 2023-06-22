@@ -33,7 +33,7 @@ export default function CenterMain() {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error...</p>}
-      {topQuestions && <MainContents questions={getSorted} />}
+      {getSorted && <MainContents questions={getSorted} />}
       {/* {topQuestions && <QuestionContents questions={topQuestions} />} */}
     </>
   );
