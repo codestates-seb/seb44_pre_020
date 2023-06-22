@@ -14,9 +14,11 @@ public class AnswerPostDto {
     @NotBlank(message = "내용은 비워둘 수 없습니다.")
     private String content;
 
-    @Valid
     @Positive
     private long userId;
+
+    @Positive
+    private long questionId;
 
     public User getUser(){
         User user = new User();

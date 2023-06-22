@@ -1,7 +1,7 @@
 package com.codestates.PreProject.question.entity;
 
+import com.codestates.PreProject.answer.entity.Answer;
 import com.codestates.PreProject.user.entity.User;
-import com.codestates.PreProject.vote.Vote;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,13 +10,15 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 // TODO 데이터베이스의 테이블과 매핑되는 객체(db 테이블, 구조, 필트를 나타냄)
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "posts")
+//@Table(name = "posts")
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,31 +39,25 @@ public class Question {
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
     @Column(columnDefinition = "integer default 0", nullable = false)
-    private long viewCount;
+    private Long viewCount = 0L;
 
     @Column(columnDefinition = "integer default 0", nullable = false)
-    private long voteCount;
+    private Long voteCount = 0L;
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "VOTE_ID")
-    private Vote vote;
+    @OneToMany(mappedBy = "question")
+    private List<Answer> AnswerList = new ArrayList<>();
 
     public Question(String title, String content) {
         this.title = title;
         this.content = content;
-        this.vote = new Vote();
     }
 
     public void setViewCount(long viewCount) {
         this.viewCount = viewCount;
-    }
-
-    public long getVoteCount() {
-        return this.vote.getVoteCnt();
     }
 
     public void setVoteCount(long voteCount) {

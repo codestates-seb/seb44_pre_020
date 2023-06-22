@@ -1,7 +1,7 @@
 package com.codestates.PreProject.user.entity;
 
-
 import com.codestates.PreProject.answer.entity.Answer;
+import com.codestates.PreProject.question.entity.Question;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -38,12 +38,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Answer> answers = new ArrayList<>();
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles = new ArrayList<>();
-
-    @Enumerated(value = EnumType.STRING)
-    @Column(length = 20, nullable = false)
-    private UserStatus userStatus = UserStatus.USER_ACTIVE;
+    @OneToMany(mappedBy = "user")
+    private List<Question> questions = new ArrayList<>();
 
     public User(String email, String phoneNumber, String username, String password) {
         this.email = email;
@@ -51,7 +47,9 @@ public class User {
         this.username = username;
         this.password = password;
         this.answers = new ArrayList<>();
+        this.questions = new ArrayList<>();
     }
+
 
     public User(String email){
         this.email = email;
@@ -62,20 +60,5 @@ public class User {
         answers.add(answer);
     }
 
-    public enum UserStatus {
-        USER_ACTIVE("활동중"),
-        USER_SLEEP("휴면 상태"),
-        USER_QUIT("탈퇴 상태");
-
-        @Getter
-        private String status;
-
-        UserStatus(String status) {
-            this.status = status;
-        }
-    }
-
 }
-
-
 

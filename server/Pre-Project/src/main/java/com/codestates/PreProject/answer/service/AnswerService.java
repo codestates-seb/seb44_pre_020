@@ -27,8 +27,6 @@ public class AnswerService {
 
     public Answer createAnswer(Answer answer) {
         userService.findVerifiedUser(answer.getUser().getUserId());
-
-
         return answerRepository.save(answer);
     }
 

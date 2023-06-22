@@ -5,13 +5,11 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 @Getter
 @Setter
 public class QuestionPatchDto {
-    private long userId;
-    private long questionId;
-
     @NotBlank(message = "제목을 입력하세요")
     @Column(nullable = false)
     private String title;
@@ -20,7 +18,7 @@ public class QuestionPatchDto {
     @Column(nullable = false)
     private String content;
 
-    public void setQuestionId(long questionId) {
-        this.questionId = questionId;
-    }
+    @Positive
+    private long userId;
+
 }

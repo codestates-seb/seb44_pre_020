@@ -1,5 +1,6 @@
 package com.codestates.PreProject.question.dto;
 
+import com.codestates.PreProject.user.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,14 +12,19 @@ import javax.validation.constraints.Positive;
 @Getter
 @Setter
 public class QuestionPostDto {
-    @Valid
-    @Positive
-    private long questionId;
-
     @NotBlank(message="제목을 입력하세요")
     private String title;
 
     @NotBlank(message="질문을 입력하세요")
     private String content;
+
+    @Positive
+    private long userId;
+
+    public User getUser(){
+        User user = new User();
+        user.setUserId(userId);
+        return user;
+    }
 
 }

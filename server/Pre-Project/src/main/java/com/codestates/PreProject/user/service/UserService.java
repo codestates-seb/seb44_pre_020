@@ -50,12 +50,16 @@ public class UserService {
         User findUser = findVerifiedUser(userId);
 
         Optional.ofNullable(user.getAnswers())
-                .ifPresent(findUser::setAnswers);
+                .ifPresent(answers -> findUser.setAnswers(answers));
         Optional.ofNullable(user.getEmail())
-                .ifPresent(findUser::setEmail);
+                .ifPresent(email -> findUser.setEmail(email));
 
         if (findUser.getAnswers() == null){
             findUser.setAnswers(new ArrayList<>());
+        }
+
+        if (findUser.getQuestions() == null){
+            findUser.setQuestions(new ArrayList<>());
         }
 
         return userRepository.save(findUser);

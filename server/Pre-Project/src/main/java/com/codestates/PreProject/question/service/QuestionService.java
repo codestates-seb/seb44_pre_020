@@ -1,8 +1,8 @@
 package com.codestates.PreProject.question.service;
 
-import com.codestates.PreProject.question.entity.Question;
 import com.codestates.PreProject.exception.ExceptionCode;
 import com.codestates.PreProject.exception.LogicalException;
+import com.codestates.PreProject.question.entity.Question;
 import com.codestates.PreProject.question.repository.QuestionRepository;
 import com.codestates.PreProject.user.service.UserService;
 import org.springframework.stereotype.Service;

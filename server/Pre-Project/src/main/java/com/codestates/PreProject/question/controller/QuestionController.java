@@ -63,7 +63,6 @@ public class QuestionController {
     @PatchMapping("/questions/{question-id}")
     public ResponseEntity patchQuestion(@PathVariable("question-id") @Positive long questionId,
                                       @Valid @RequestBody QuestionPatchDto questionPatchDto){
-        questionPatchDto.setQuestionId(questionId);
         Question question = questionService
                 .updateQuestion(mapper.questionPatchDtoToQuestion(questionPatchDto),
                         questionId, questionPatchDto.getTitle());
@@ -82,11 +81,11 @@ public class QuestionController {
     }
 
     // TODO 전체 질문 조회
-    @GetMapping("/questions/list")
+    @GetMapping("/questions")
     public ResponseEntity getAllQuestions() {
         List<Question> allQuestions = questionService.getAllQuestions();
 
-        return new ResponseEntity(new SingleResponseDto<>(mapper.questionsToQuestionResponses(allQuestions)), HttpStatus.OK);
+        return new ResponseEntity(new ListResponseDto<>(mapper.questionsToQuestionResponses(allQuestions)), HttpStatus.OK);
     }
 
     // TODO 질문 삭제

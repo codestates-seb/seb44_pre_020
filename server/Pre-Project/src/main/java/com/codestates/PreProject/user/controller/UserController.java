@@ -1,6 +1,6 @@
 package com.codestates.PreProject.user.controller;
 
-// TODO : User controller class implementation
+// User controller class implementation
 
 import com.codestates.PreProject.answer.dto.AnswerPatchDto;
 import com.codestates.PreProject.response.ListResponseDto;
@@ -21,6 +21,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/users")
@@ -75,7 +80,7 @@ public class UserController {
                 , HttpStatus.OK);
     }
 
-    @GetMapping("/{user-id}/list")
+    @GetMapping
     public ResponseEntity getUsers(){
         List<User> users = userService.findUsers();
         return new ResponseEntity<>(
@@ -91,4 +96,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+
+
 }
+
