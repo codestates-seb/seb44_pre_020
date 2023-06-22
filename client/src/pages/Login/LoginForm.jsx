@@ -44,7 +44,7 @@ function LoginForm() {
 
 /*     const url = `${BASE_URL}/v1/user/login`; */
     await axios
-      .post("/login", { email, password })
+      .post("/users/login", { email, password })
       .then(res => {
         if (res.data.length > 0) {
           emailRef.current.value = '';
@@ -57,7 +57,7 @@ function LoginForm() {
           // * : 토큰을 받아서 유저 데이터를 받아오는 요청(userSlice에 유저 정보 저장)
           dispatch(fetchUser()); */
 
-          window.location.replace("http://localhost:3000/LoginHome");
+          location.href="/loginhome";
         } else {
           setError('No corresponding user information found');
         }

@@ -42,12 +42,13 @@ function SignupForm() {
 
 /*     const url = `${BASE_URL}/v1/sign-up`; */
     await axios
-      .post("/signup", { userName: name, email, password })
+      .post("/users/signup", { userName: name, email, password })
       .then(() => {
         nameRef.current.value = '';
         emailRef.current.value = '';
         pwRef.current.value = '';
 /*         navigate('/user/login'); */
+        alert("Sign Up Success!")
       })
       .catch(() => {
         setError('An error has occurred');
