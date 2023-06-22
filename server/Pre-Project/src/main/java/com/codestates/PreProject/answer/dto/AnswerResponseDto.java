@@ -12,5 +12,6 @@ public class AnswerResponseDto {
     private long answerId;
     private String content;
     private long voteCnt;
+    private long questionId;
     private boolean accepted;
 }

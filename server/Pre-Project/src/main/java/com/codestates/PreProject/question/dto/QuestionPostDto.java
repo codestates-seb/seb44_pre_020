@@ -1,28 +1,30 @@
-package com.codestates.PreProject.answer.dto;
-
-// DTO implemented
+package com.codestates.PreProject.question.dto;
 
 import com.codestates.PreProject.user.entity.User;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 @Getter
-public class AnswerPostDto {
-    @NotBlank(message = "내용은 비워둘 수 없습니다.")
+@Setter
+public class QuestionPostDto {
+    @NotBlank(message="제목을 입력하세요")
+    private String title;
+
+    @NotBlank(message="질문을 입력하세요")
     private String content;
 
     @Positive
     private long userId;
-
-    @Positive
-    private long questionId;
 
     public User getUser(){
         User user = new User();
         user.setUserId(userId);
         return user;
     }
+
 }

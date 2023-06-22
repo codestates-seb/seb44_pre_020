@@ -1,6 +1,7 @@
 package com.codestates.PreProject.user.entity;
 
 import com.codestates.PreProject.answer.entity.Answer;
+import com.codestates.PreProject.question.entity.Question;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,13 +38,18 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Answer> answers = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<Question> questions = new ArrayList<>();
+
     public User(String email, String phoneNumber, String username, String password) {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
         this.answers = new ArrayList<>();
+        this.questions = new ArrayList<>();
     }
+
 
     public User(String email){
         this.email = email;
@@ -55,3 +61,4 @@ public class User {
     }
 
 }
+

@@ -2,7 +2,7 @@ package com.codestates.PreProject.answer.entity;
 
 import com.codestates.PreProject.comment.entity.AnswerComment;
 import com.codestates.PreProject.comment.entity.Comment;
-import com.codestates.PreProject.question.Question;
+import com.codestates.PreProject.question.entity.Question;
 import com.codestates.PreProject.user.entity.User;
 import com.codestates.PreProject.vote.Vote;
 import lombok.Getter;
@@ -34,10 +34,10 @@ public class Answer{
     @Column(nullable = false, name = "LAST_MODIFIED_AT")
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
-    // TODO : 차후 Question에도 JPA 적용 필요
-//    @ManyToOne
-//    @JoinColumn(name = "QUESTION_ID")
-//    private Question question;
+//     TODO : 차후 Question에도 JPA 적용 필요
+    @ManyToOne
+    @JoinColumn(name = "QUESTION_ID")
+    private Question question;
 
     @OneToMany(mappedBy = "answer")
     private List<AnswerComment> comments = new ArrayList<>();

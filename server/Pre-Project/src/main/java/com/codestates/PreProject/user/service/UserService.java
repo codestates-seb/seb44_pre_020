@@ -49,6 +49,10 @@ public class UserService {
             findUser.setAnswers(new ArrayList<>());
         }
 
+        if (findUser.getQuestions() == null){
+            findUser.setQuestions(new ArrayList<>());
+        }
+
         return userRepository.save(findUser);
     }
 
