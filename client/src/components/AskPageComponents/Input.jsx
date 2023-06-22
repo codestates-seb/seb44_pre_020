@@ -6,8 +6,9 @@ import {
   questionTitleState,
 } from "../../Atoms/atoms";
 import { availableTags } from "../../assets/arrays";
-import { removeBtn } from "../../assets/img/img";
+
 import TipTap from "../TipTap";
+import { removeBtn } from "../../assets/img/Img";
 
 const Input = ({
   title,

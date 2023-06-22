@@ -16,10 +16,11 @@ import {
   tagString,
 } from "../../assets/strings/askStrings";
 import { year, formattedMonth, formattedDay } from "../../assets/strings/date";
-import { pencil } from "../../assets/img/img";
+
 import Guide from "./Guide";
 import Input from "./Input";
 import Review from "./Review";
+import { pencil } from "../../assets/img/Img";
 
 const Form = () => {
   const navigate = useNavigate();

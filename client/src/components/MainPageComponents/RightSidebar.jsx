@@ -115,7 +115,7 @@ export default function RightSidebar() {
         </li>
         <li className=" flex p-2 items-center text-[#0d78beed]">
           {/* <GiDuffelBag className="text-xl mr-2" /> */}
-          <divs>I can't tag my AAC files with meta-data; what can I do instead?</divs>
+          <div>I can't tag my AAC files with meta-data; what can I do instead?</div>
         </li>
         <li className=" flex p-2 items-center text-[#0d78beed]">
           {/* <GiDuffelBag className="text-xl mr-2" /> */}

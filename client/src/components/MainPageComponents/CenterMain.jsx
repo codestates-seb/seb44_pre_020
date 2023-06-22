@@ -1,33 +1,40 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useRecoilValue } from "recoil";
 import { QuestionApiState } from "../../Atoms/QuestionApiState";
 import { useQuery } from "@tanstack/react-query";
-import MainTab from "./MainTab";
-import QuestionCard from "./QuestionCard";
+import MainContents from "./MainContents";
+import QuestionContents from "./QuestionContents";
+import { SortOrderState } from "../../Atoms/SortOrderState";
 
 export default function CenterMain() {
   const question = useRecoilValue(QuestionApiState);
-  const { isLoading, error, data: questions } = useQuery(["questions"], () => question.search());
-  console.log(questions);
+  const sortOrder = useRecoilValue(SortOrderState);
+  const { isLoading, error, data: topQuestions } = useQuery(["topQuestions"], () => question.search());
+
+  const getSorted = useMemo(() => {
+    if (!topQuestions) {
+      return null;
+    }
+    switch (sortOrder) {
+      case "Latest":
+        return [...topQuestions].sort((a, b) => new Date(b.date) - new Date(a.date));
+      case "Votes":
+        return [...topQuestions].sort((a, b) => b.score - a.score);
+      case "Answers":
+        return [...topQuestions].sort((a, b) => b.answers - a.answers);
+      case "Views":
+        return [...topQuestions].sort((a, b) => b.views - a.views);
+      default:
+        return [...topQuestions].sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+  }, [sortOrder, topQuestions]);
 
   return (
     <>
-      <div className=" flex justify-between pb-5 border-b-2">
-        <h1 className="text-3xl font-medium pl-5">Top Questions</h1>
-        <button className=" bg-[#1e95ff] hover:bg-[#0074CC] text-base text-white rounded-[4px] p-[10px]">Ask Question</button>
-      </div>
-      <MainTab />
-      <section>
-        {isLoading && <p>Loading...</p>}
-        {error && <p>Error...</p>}
-        {questions && (
-          <ul>
-            {questions.map((question, idx) => (
-              <QuestionCard key={idx} question={question} />
-            ))}
-          </ul>
-        )}
-      </section>
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error...</p>}
+      {getSorted && <MainContents questions={getSorted} />}
+      {/* {topQuestions && <QuestionContents questions={topQuestions} />} */}
     </>
   );
 }
