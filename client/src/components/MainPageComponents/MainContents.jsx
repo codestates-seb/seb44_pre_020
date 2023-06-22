@@ -5,6 +5,7 @@ import QuestionCard from "./QuestionCard";
 
 export default function MainContetns({ questions }) {
   const navigate = useNavigate();
+
   return (
     <>
       <div className=" flex flex-col pb-4 border-b-2">
