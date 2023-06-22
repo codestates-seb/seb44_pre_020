@@ -1,6 +1,7 @@
 package com.codestates.PreProject.question.entity;
 
-import com.codestates.PreProject.user.entity.User;
+import com.codestates.PreProject.member.entity.Member;
+import com.codestates.PreProject.vote.Vote;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,16 +43,25 @@ public class Question {
     private long voteCount;
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
-    private User user;
+    @JoinColumn(name = "member_ID")
+    private Member member;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "VOTE_ID")
+    private Vote vote;
 
     public Question(String title, String content) {
         this.title = title;
         this.content = content;
+        this.vote = new Vote();
     }
 
     public void setViewCount(long viewCount) {
         this.viewCount = viewCount;
+    }
+
+    public long getVoteCount() {
+        return this.vote.getVoteCnt();
     }
 
     public void setVoteCount(long voteCount) {

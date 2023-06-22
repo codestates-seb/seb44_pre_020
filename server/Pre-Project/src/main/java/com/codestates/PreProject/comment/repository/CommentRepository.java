@@ -1,3 +1,4 @@
+/*
 package com.codestates.PreProject.comment.repository;
 
 import com.codestates.PreProject.comment.entity.Comment;
@@ -8,3 +9,4 @@ import java.util.Optional;
 public interface CommentRepository<T> extends JpaRepository<Comment<T>, Long> {
     Optional<Comment<T>> findByContentId(long contentId);
 }
+*/

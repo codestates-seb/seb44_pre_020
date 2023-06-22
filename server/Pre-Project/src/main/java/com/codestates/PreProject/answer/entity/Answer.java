@@ -1,9 +1,7 @@
 package com.codestates.PreProject.answer.entity;
 
-import com.codestates.PreProject.comment.entity.AnswerComment;
-import com.codestates.PreProject.comment.entity.Comment;
-import com.codestates.PreProject.question.Question;
-import com.codestates.PreProject.user.entity.User;
+//import com.codestates.PreProject.comment.entity.AnswerComment;
+import com.codestates.PreProject.member.entity.Member;
 import com.codestates.PreProject.vote.Vote;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-// User, Question, Vote entity Mapping Implemented
+// Member, Question, Vote entity Mapping Implemented
 
 @NoArgsConstructor
 @Getter
@@ -38,21 +36,21 @@ public class Answer{
 //    @ManyToOne
 //    @JoinColumn(name = "QUESTION_ID")
 //    private Question question;
-
-    @OneToMany(mappedBy = "answer")
-    private List<AnswerComment> comments = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "answer")
+//    private List<AnswerComment> comments = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
-    private User user;
+    @JoinColumn(name = "member_ID")
+    private Member member;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "VOTE_ID")
     private Vote vote;
 
-    public Answer(String content, User user) {
+    public Answer(String content, Member Member) {
         this.content = content;
-        this.user = user;
+        this.member = member;
         this.vote = new Vote();
         this.accepted = false;
     }

@@ -9,6 +9,7 @@ public class HelloController {
 
     @RequestMapping("/hello")
     @ResponseBody
-    public String hello(){
+    public String hello() {
         return "This is Pre-project";
     }
+}

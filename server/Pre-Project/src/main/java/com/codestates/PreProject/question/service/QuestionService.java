@@ -1,10 +1,10 @@
 package com.codestates.PreProject.question.service;
 
 import com.codestates.PreProject.question.entity.Question;
-import com.codestates.PreProject.question.exception.ExceptionCode;
-import com.codestates.PreProject.question.exception.LogicalException;
+import com.codestates.PreProject.exception.ExceptionCode;
+import com.codestates.PreProject.exception.LogicalException;
 import com.codestates.PreProject.question.repository.QuestionRepository;
-import com.codestates.PreProject.user.service.UserService;
+import com.codestates.PreProject.member.service.MemberService;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotBlank;
@@ -17,15 +17,15 @@ import java.util.Optional;
 @Service
 public class QuestionService {
     private final QuestionRepository questionRepository;
-    private final UserService userService;
+    private final MemberService memberService;
 
-    public QuestionService(QuestionRepository questionRepository, UserService userService) {
+    public QuestionService(QuestionRepository questionRepository, MemberService memberService) {
         this.questionRepository = questionRepository;
-        this.userService = userService;
+        this.memberService = memberService;
     }
 
     public Question createQuestion (Question question) {
-//        userService.findVerifiedUser(question.getUser().getUserId());
+//        MemberService.findVerifiedMember(question.getMember().getMemberId());
         return questionRepository.save(question);
     }
 
@@ -59,8 +59,8 @@ public class QuestionService {
                 .orElseThrow(() -> new LogicalException(ExceptionCode.QUESTION_NOT_FOUND));
     }
 
-    public void setLikeVote(long questionId, long userId) {
-        userService.findVerifiedUser(userId);
+    public void setLikeVote(long questionId, long memberId) {
+        memberService.findVerifiedMember(memberId);
     }
 
     public long getVoteCount(long questionId) {

@@ -1,4 +1,4 @@
-package com.codestates.PreProject.user.dto;
+package com.codestates.PreProject.member.dto;
 
 import lombok.Getter;
 
@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Getter
-public class UserSignUpDto {
+public class MemberSignUpDto {
     @NotBlank
     @Email
     private String email;
@@ -17,7 +17,7 @@ public class UserSignUpDto {
     private String phoneNumber;
 
     @NotBlank(message = "이름은 비워둘 수 없습니다.")
-    private String username;
+    private String Membername;
 
     @NotBlank(message = "비밀번호는 비워둘 수 없습니다.")
     private String password;

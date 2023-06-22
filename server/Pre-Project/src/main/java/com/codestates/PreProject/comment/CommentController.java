@@ -1,3 +1,4 @@
+/*
 package com.codestates.PreProject.comment;
 
 import com.codestates.PreProject.comment.dto.CommentPostDto;
@@ -18,6 +19,7 @@ import java.net.URI;
 @RequestMapping("/{content}/comments")
 @Validated
 @Slf4j
+
 public class CommentController <T> {
     private final static String COMMENT_DEF_URL = "/{content}/comments";
 
@@ -48,3 +50,4 @@ public class CommentController <T> {
         return ResponseEntity.created(location).build();
     }
 }
+*/
