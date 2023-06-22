@@ -25,7 +25,7 @@ public class QuestionService {
     }
 
     public Question createQuestion (Question question) {
-//        userService.findVerifiedUser(question.getUser().getUserId());
+        userService.findVerifiedUser(question.getUser().getUserId());
         return questionRepository.save(question);
     }
 

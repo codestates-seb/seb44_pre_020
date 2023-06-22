@@ -23,7 +23,7 @@ import java.util.List;
 public class Answer{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long answerId;
 
     @Column(nullable = false)
     private String content;
