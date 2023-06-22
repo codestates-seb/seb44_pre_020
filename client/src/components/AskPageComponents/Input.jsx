@@ -1,14 +1,32 @@
 import { useRecoilState } from "recoil";
-import { tagsState, tagState, bodyState } from "../../Atoms/atoms";
+import { useState } from "react";
+import {
+  tagsState,
+  questionBodyState,
+  questionTitleState,
+} from "../../Atoms/atoms";
 import { availableTags } from "../../assets/arrays";
 
 import TipTap from "../TipTap";
 import { removeBtn } from "../../assets/img/Img";
 
-const Input = ({ title, text, placeHolder, btnText, height, onFocus, isBody, isTitle, value, onChange, isTag }) => {
+const Input = ({
+  title,
+  text,
+  placeHolder,
+  btnText,
+  height,
+  onFocus,
+  isBody,
+  isTitle,
+  isTag,
+  // value,
+  // onChange,
+}) => {
+  const [questionTitle, setQuestionTitle] = useRecoilState(questionTitleState);
+  const [questionBody, setQuestionBody] = useRecoilState(questionBodyState);
   const [tags, setTags] = useRecoilState(tagsState);
-  const [tag, setTag] = useRecoilState(tagState);
-  const [body, setBody] = useRecoilState(bodyState);
+  const [tag, setTag] = useState("");
 
   const handleTagSelection = (e) => {
     setTag(e.target.value);
@@ -32,7 +50,7 @@ const Input = ({ title, text, placeHolder, btnText, height, onFocus, isBody, isT
       <p className="mb-1 text-xs">{text}</p>
       {isBody ? (
         <div>
-          <TipTap setBody={setBody} onFocus={onFocus} />
+          <TipTap setBody={setQuestionBody} onFocus={onFocus} />
         </div>
       ) : isTitle ? (
         <input
@@ -40,28 +58,34 @@ const Input = ({ title, text, placeHolder, btnText, height, onFocus, isBody, isT
           placeholder={placeHolder}
           className={`${height} w-full border-solid border rounded py-1 pl-2.5 border-slate-400 placeholder:text-slate-300 placeholder:text-sm mb-2.5`}
           onFocus={onFocus}
-          value={value}
-          onChange={onChange}
+          value={questionTitle}
+          onChange={(e) => setQuestionTitle(e.target.value)}
         ></input>
       ) : (
         <div>
-          <input
-            type="text"
-            placeholder={placeHolder}
-            className={`${height} w-full border-solid border rounded py-1 pl-2.5 border-slate-400 placeholder:text-slate-300 placeholder:text-sm mb-2.5 hidden`}
-            value={tags}
-          ></input>
           <div className="mb-4 mt-4 border-solid border rounded p-3">
             {tags.map((tag) => (
-              <span className="mr-4 bg-tag px-1.5 py-1 text-cyan-800 rounded" key={tag}>
+              <span
+                className="mr-4 bg-tag px-1.5 py-1 text-cyan-800 rounded"
+                key={tag}
+              >
                 {tag}
-                <button type="button" className="ml-1" onClick={() => handleRemoveTag(tag)}>
+                <button
+                  type="button"
+                  className="ml-1"
+                  onClick={() => handleRemoveTag(tag)}
+                >
                   {removeBtn}
                 </button>
               </span>
             ))}
           </div>
-          <select className="mb-6" value={tag} onChange={handleTagSelection} onClick={onFocus}>
+          <select
+            className="mb-6"
+            value={tag}
+            onChange={handleTagSelection}
+            onClick={onFocus}
+          >
             <option value="">Select a tag</option>
             {availableTags.map((tag) => (
               <option key={tag} value={tag}>
@@ -73,11 +97,18 @@ const Input = ({ title, text, placeHolder, btnText, height, onFocus, isBody, isT
       )}
 
       {isTag ? (
-        <button type="button" className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm" onClick={handleAddTag}>
+        <button
+          type="button"
+          className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm"
+          onClick={handleAddTag}
+        >
           {btnText}
         </button>
       ) : (
-        <button type="button" className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm">
+        <button
+          type="button"
+          className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm"
+        >
           {btnText}
         </button>
       )}

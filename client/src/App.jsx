@@ -11,7 +11,7 @@ function App() {
     <>
       <Header />
       <QueryClientProvider client={queryClient}>
-          <Outlet />
+        <Outlet />
       </QueryClientProvider>
       <Footer />
     </>

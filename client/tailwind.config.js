@@ -14,6 +14,7 @@ export default {
       },
       textColor: {
         "a-color": "#0a95ff",
+        check: "#2f6f44",
       },
       maxWidth: {
         "default-page": "1264px",

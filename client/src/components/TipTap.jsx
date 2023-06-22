@@ -119,7 +119,7 @@ const MenuBar = ({ editor }) => {
   );
 };
 
-const TipTap = ({ setBody, onFocus }) => {
+const TipTap = ({ setBody, onFocus, content }) => {
   const editor = useEditor({
     extensions: [
       Color.configure({ types: [TextStyle.name, ListItem.name] }),
@@ -136,7 +136,7 @@ const TipTap = ({ setBody, onFocus }) => {
       }),
       Underline,
     ],
-    content: ``,
+    content: content,
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
       setBody(html);
@@ -144,7 +144,7 @@ const TipTap = ({ setBody, onFocus }) => {
   });
 
   return (
-    <div className="mt-4">
+    <div className="mt-5">
       <MenuBar editor={editor} />
       <EditorContent editor={editor} onFocus={onFocus} />
     </div>
