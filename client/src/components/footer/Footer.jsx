@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
   const SOFIcon = () => (
@@ -10,12 +11,13 @@ export default function Footer() {
       ></path>
     </svg>
   );
+  const navigate = useNavigate();
 
   return (
     <footer className="flex sticky z-10 w-screen bg-[#232629] text-[#bfbfbf] text-sm py-10 px-4 mt-10">
       <div className="flex w-[1265px] h-[270px] max-w-[1265px] mx-auto">
         <div className=" flex gap-10">
-          <div>
+          <div className=" cursor-pointer" onClick={() => navigate(`/home`)}>
             <SOFIcon />
           </div>
           <nav className=" flex gap-20 mr-20">

@@ -1,22 +1,11 @@
 import { useRecoilState } from "recoil";
 import { tagsState, tagState, bodyState } from "../../Atoms/atoms";
 import { availableTags } from "../../assets/arrays";
-import { removeBtn } from "../../assets/img/img";
-import TipTap from "../TipTap";
 
-const Input = ({
-  title,
-  text,
-  placeHolder,
-  btnText,
-  height,
-  onFocus,
-  isBody,
-  isTitle,
-  value,
-  onChange,
-  isTag,
-}) => {
+import TipTap from "../TipTap";
+import { removeBtn } from "../../assets/img/Img";
+
+const Input = ({ title, text, placeHolder, btnText, height, onFocus, isBody, isTitle, value, onChange, isTag }) => {
   const [tags, setTags] = useRecoilState(tagsState);
   const [tag, setTag] = useRecoilState(tagState);
   const [body, setBody] = useRecoilState(bodyState);
@@ -64,27 +53,15 @@ const Input = ({
           ></input>
           <div className="mb-4 mt-4 border-solid border rounded p-3">
             {tags.map((tag) => (
-              <span
-                className="mr-4 bg-tag px-1.5 py-1 text-cyan-800 rounded"
-                key={tag}
-              >
+              <span className="mr-4 bg-tag px-1.5 py-1 text-cyan-800 rounded" key={tag}>
                 {tag}
-                <button
-                  type="button"
-                  className="ml-1"
-                  onClick={() => handleRemoveTag(tag)}
-                >
+                <button type="button" className="ml-1" onClick={() => handleRemoveTag(tag)}>
                   {removeBtn}
                 </button>
               </span>
             ))}
           </div>
-          <select
-            className="mb-6"
-            value={tag}
-            onChange={handleTagSelection}
-            onClick={onFocus}
-          >
+          <select className="mb-6" value={tag} onChange={handleTagSelection} onClick={onFocus}>
             <option value="">Select a tag</option>
             {availableTags.map((tag) => (
               <option key={tag} value={tag}>
@@ -96,18 +73,11 @@ const Input = ({
       )}
 
       {isTag ? (
-        <button
-          type="button"
-          className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm"
-          onClick={handleAddTag}
-        >
+        <button type="button" className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm" onClick={handleAddTag}>
           {btnText}
         </button>
       ) : (
-        <button
-          type="button"
-          className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm"
-        >
+        <button type="button" className="bg-sky-500 hover:bg-sky-600 p-2.5 rounded text-white text-sm">
           {btnText}
         </button>
       )}

@@ -1,5 +1,5 @@
+import { dropDown } from "../../assets/img/Img";
 import { review } from "../../assets/strings/askStrings";
-import { dropDown } from "../../assets/img/img";
 
 const Review = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-/* import Header from "./components/header/Header.jsx"; */
+import Header from "./components/header/Header.jsx";
 import AskPage from "./pages/AskPage.jsx";
 import QuestionsPage from "./pages/QuestionsPage.jsx";
 import "./index.css";
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: "/questions",
+        path: "/questions/:id",
         element: <QuestionsPage />,
       },
       {
