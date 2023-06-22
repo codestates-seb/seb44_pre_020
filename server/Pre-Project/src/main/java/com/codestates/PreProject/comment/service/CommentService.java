@@ -1,6 +1,7 @@
 package com.codestates.PreProject.comment.service;
 
 import com.codestates.PreProject.comment.dto.CommentPostDto;
+import com.codestates.PreProject.comment.entity.AnswerComment;
 import com.codestates.PreProject.comment.entity.Comment;
 import com.codestates.PreProject.comment.repository.CommentRepository;
 import com.codestates.PreProject.exception.ExceptionCode;
@@ -36,7 +37,11 @@ public class CommentService <T> {
     }
 
     public void deleteComment(long commentId) {
-        Comment findComment = findVerifiedComment(commentId);
+        Comment<T> findComment = findVerifiedComment(commentId);
         commentRepository.delete(findComment);
+    }
+
+    public List<AnswerComment> findCommentsByAnswerId(Long contentId) {
+        return commentRepository.findByContentId(contentId);
     }
 }

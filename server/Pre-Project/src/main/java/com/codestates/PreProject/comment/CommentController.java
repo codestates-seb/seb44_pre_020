@@ -2,7 +2,6 @@ package com.codestates.PreProject.comment;
 
 import com.codestates.PreProject.answer.entity.Answer;
 import com.codestates.PreProject.comment.dto.CommentPostDto;
-import com.codestates.PreProject.comment.dto.CommentResponseDto;
 import com.codestates.PreProject.comment.entity.AnswerComment;
 import com.codestates.PreProject.comment.entity.Comment;
 import com.codestates.PreProject.comment.mapper.CommentMapper;
@@ -23,12 +22,10 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/{content}/comments")
+@RequestMapping("/{content}/{content-id}/comments")
 @Validated
 @Slf4j
-public class CommentController <T> {
-    private final static String COMMENT_DEF_URL = "/{content}/comments";
-
+public class CommentController<T> {
     private final CommentService commentService;
     private final CommentMapper mapper;
 
@@ -39,27 +36,27 @@ public class CommentController <T> {
 
     @PostMapping
     public ResponseEntity createComment(@PathVariable("content") String content,
+                                        @PathVariable("content-id") Long contentId,
                                         @RequestBody CommentPostDto commentDto) {
         Comment<T> createdComment;
 
         if (content.equals("answers")) {
             createdComment = commentService.createComment(mapper.commentPostDtoToAnswerComment(commentDto));
+            URI location = UriCreator.createUri("/answers/{answerId}/comments", contentId);
+            return ResponseEntity.created(location).build();
         } else if (content.equals("questions")) {
             // Todo: questionComment implementation
             throw new LogicalException(ExceptionCode.INVALID_CONTENT);
         } else {
             throw new LogicalException(ExceptionCode.INVALID_CONTENT);
         }
-
-        URI location = UriCreator.createUri(COMMENT_DEF_URL, createdComment.getCommentId());
-        return ResponseEntity.created(location).build();
     }
 
-    // Todo : Read, Delete implementation
     @GetMapping("/{comment-id}")
     public ResponseEntity getComment(@PathVariable("content") String content,
-                                    @PathVariable("comment-id") @Positive long commentId){
-        Comment comment = commentService.findVerifiedComment(commentId);
+                                     @PathVariable("content-id") Long contentId,
+                                     @PathVariable("comment-id") @Positive long commentId) {
+        Comment<T> comment = commentService.findVerifiedComment(commentId);
 
         if (content.equals("answers")) {
             if (comment instanceof AnswerComment) {
@@ -79,30 +76,29 @@ public class CommentController <T> {
     }
 
     @GetMapping()
-    public ResponseEntity getComments(@PathVariable("content") String content){
-
-        if(content.equals("answers")){
-            List<AnswerComment> comments = commentService.findComments();
+    public ResponseEntity getComments(@PathVariable("content") String content,
+                                      @PathVariable("content-id") Long contentId) {
+        if (content.equals("answers")) {
+            List<AnswerComment> comments = commentService.findCommentsByAnswerId(contentId);
 
             return new ResponseEntity<>(
                     new ListResponseDto<>(
-                            mapper.answerCommentsToCommentResponses(comments))
-                    ,HttpStatus.OK);
+                            mapper.answerCommentsToCommentResponses(comments)),
+                    HttpStatus.OK);
         } else if (content.equals("questions")) {
-            // Todo : questionComment implementation
+            // Todo: questionComment implementation
             throw new LogicalException(ExceptionCode.INVALID_CONTENT);
         } else {
             throw new LogicalException(ExceptionCode.INVALID_CONTENT);
         }
-
     }
 
     @DeleteMapping("/{comment-id}")
-    public ResponseEntity deleteComment(@PathVariable("comment-id") @Positive long commentId){
+    public ResponseEntity deleteComment(@PathVariable("content") String content,
+                                        @PathVariable("content-id") Long contentId,
+                                        @PathVariable("comment-id") @Positive long commentId) {
         commentService.deleteComment(commentId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-
 }
