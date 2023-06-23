@@ -3,7 +3,7 @@ import com.codestates.PreProject.auth.utils.CustomAuthorityUtils;
 import com.codestates.PreProject.exception.BusinessLogicException;
 import com.codestates.PreProject.exception.ExceptionCode;
 import com.codestates.PreProject.exception.LogicalException;
-import com.codestates.PreProject.helper.event.UserRegistrationApplicationEvent;
+import com.codestates.PreProject.auth.helper.event.UserRegistrationApplicationEvent;
 import com.codestates.PreProject.user.entity.User;
 import com.codestates.PreProject.user.repository.UserRepository;
 import org.springframework.context.ApplicationEventPublisher;

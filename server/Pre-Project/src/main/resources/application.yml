@@ -20,8 +20,8 @@ spring:
       client:
         registration:
           google:
-            clientId: 21746440821-8bi5g65idb6vjac4ftglmusnt2el4log.apps.googleusercontent.com
-            clientSecret: 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
+            clientId: ${CLIENT_SECRET_ID}
+            clientSecret: ${CLIENT_SECRET_PASS}
             scope:
               - email
               - profile
@@ -40,6 +40,6 @@ mail:
     admin: admin@gmail.com
 jwt:
   key:
-    secret: ${JWT_SECRET_KEY}               # 민감한 정보는 시스템 환경 변수에서 로드한다.
-  access-token-expiration-minutes: 30
+    secret: ${JWT_SECRET_KEY}
+  access-token-expiration-minutes: 40
   refresh-token-expiration-minutes: 420

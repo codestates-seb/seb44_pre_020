@@ -1,4 +1,4 @@
-package com.codestates.PreProject.helper.event;
+package com.codestates.PreProject.auth.helper.event;
 
 import com.codestates.PreProject.user.entity.User;
 

@@ -1,4 +1,3 @@
-/*
 package com.codestates.PreProject.comment.repository;
 
 import com.codestates.PreProject.comment.entity.AnswerComment;
@@ -13,4 +12,3 @@ public interface CommentRepository<T> extends JpaRepository<Comment<T>, Long> {
 
     List<AnswerComment> findByContentId(Long contentId);
 }
-*/

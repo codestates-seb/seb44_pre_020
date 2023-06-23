@@ -1,4 +1,3 @@
-/*
 package com.codestates.PreProject.comment.service;
 
 import com.codestates.PreProject.comment.dto.CommentPostDto;
@@ -46,4 +45,3 @@ public class CommentService <T> {
         return commentRepository.findByContentId(contentId);
     }
 }
-*/

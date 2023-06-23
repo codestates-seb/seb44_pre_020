@@ -28,6 +28,11 @@ public class User {
     @Column(nullable = false, unique = true)
     private String phoneNumber;
 
+    @ElementCollection
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role")
+    private List<String> roles;
+
 
     @Column(nullable = false)
     private String password;
@@ -59,6 +64,11 @@ public class User {
     public void addAnswer(Answer answer){
         answers.add(answer);
     }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
 
 }
 
