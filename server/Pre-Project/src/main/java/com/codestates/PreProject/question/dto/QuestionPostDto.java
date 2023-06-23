@@ -17,14 +17,4 @@ public class QuestionPostDto {
 
     @NotBlank(message="질문을 입력하세요")
     private String content;
-
-    @Positive
-    private long userId;
-
-    public User getUser(){
-        User user = new User();
-        user.setUserId(userId);
-        return user;
-    }
-
 }

@@ -52,7 +52,7 @@ public class UserController {
         return ResponseEntity.created(location).build();
     }
 
-    // TODO: login과 logout 구현 예정 -- JWT 인증 방식 도입
+    // TODO: login과 logout 구현 예정 -- Spring Security
     @PostMapping("/login")
     public ResponseEntity loginUser(){
         return null;

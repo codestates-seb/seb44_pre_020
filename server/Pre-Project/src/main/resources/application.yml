@@ -9,7 +9,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true      # SQL 쿼리 출력
-  defer-datasource-initialization: true # 초기 데이터 삽입을 위해 필요하다.
+#  defer-datasource-initialization: true # 초기 데이터 삽입을 위해 필요하다.
   sql:
     init:
       mode: always

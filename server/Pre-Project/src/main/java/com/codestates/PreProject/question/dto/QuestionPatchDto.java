@@ -19,6 +19,7 @@ public class QuestionPatchDto {
     private String content;
 
     @Positive
-    private long userId;
+    private Long userId;
 
+    private Long voteCnt;
 }

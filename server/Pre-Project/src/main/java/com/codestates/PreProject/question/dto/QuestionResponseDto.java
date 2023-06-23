@@ -12,6 +12,6 @@ public class QuestionResponseDto {
     private String title;
     private String content;
     private Long viewCount;
-    private Long voteCount;
+    private Long voteCnt;
 
 }
