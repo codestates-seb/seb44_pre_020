@@ -12,7 +12,6 @@ import java.util.List;
 public class UserResponseDto {
     private Long userId;
     private String username;
-    private String phoneNumber;
     private List<Answer> answers;
     public void setUserId(long userId){
         this.userId = userId;

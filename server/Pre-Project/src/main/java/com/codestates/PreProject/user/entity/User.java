@@ -25,10 +25,6 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, unique = true)
-    private String phoneNumber;
-
-
     @Column(nullable = false)
     private String password;
 
@@ -41,9 +37,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Question> questions = new ArrayList<>();
 
-    public User(String email, String phoneNumber, String username, String password) {
+    public User(String email, String username, String password) {
         this.email = email;
-        this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
         this.answers = new ArrayList<>();
