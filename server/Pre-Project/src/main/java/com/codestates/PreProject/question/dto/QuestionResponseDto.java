@@ -8,10 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class QuestionResponseDto {
-    private long questionId;
+    private Long questionId;
     private String title;
     private String content;
-    private long viewCount;
-    private long voteCount;
+    private Long viewCount;
+    private Long voteCount;
 
 }

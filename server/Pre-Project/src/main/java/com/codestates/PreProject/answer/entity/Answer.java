@@ -23,7 +23,7 @@ import java.util.List;
 public class Answer{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long answerId;
+    private Long id;
 
     @Column(nullable = false)
     private String content;
@@ -34,9 +34,6 @@ public class Answer{
     @Column(nullable = false, name = "LAST_MODIFIED_AT")
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
-    private Long id;
-
-//     TODO : 차후 Question에도 JPA 적용 필요
     @ManyToOne
     @JoinColumn(name = "QUESTION_ID")
     private Question question;
@@ -68,7 +65,4 @@ public class Answer{
     public void setVoteCount(Long updateVoteCnt) {
         this.vote.setVoteCnt(updateVoteCnt);
     }
-
-
-
 }

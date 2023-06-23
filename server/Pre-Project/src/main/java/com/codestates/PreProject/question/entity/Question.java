@@ -2,6 +2,7 @@ package com.codestates.PreProject.question.entity;
 
 import com.codestates.PreProject.answer.entity.Answer;
 import com.codestates.PreProject.user.entity.User;
+import com.codestates.PreProject.vote.Vote;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +19,6 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-//@Table(name = "posts")
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,29 +38,35 @@ public class Question {
     @Column(nullable = false, name = "LAST_MODIFIED_AT")
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
-    @Column(columnDefinition = "integer default 0", nullable = false)
+    @Column(nullable = false)
     private Long viewCount = 0L;
 
-    @Column(columnDefinition = "integer default 0", nullable = false)
-    private Long voteCount = 0L;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "VOTE_ID")
+    private Vote vote;
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 
     @OneToMany(mappedBy = "question")
-    private List<Answer> AnswerList = new ArrayList<>();
+    private List<Answer> answerList = new ArrayList<>();
 
     public Question(String title, String content) {
         this.title = title;
         this.content = content;
+        this.vote = new Vote();
+        this.answerList = new ArrayList<>();
     }
 
     public void setViewCount(long viewCount) {
         this.viewCount = viewCount;
     }
 
-    public void setVoteCount(long voteCount) {
-        this.voteCount = voteCount;
+    public Long getVoteCount() {
+        return this.vote.getVoteCnt();
     }
-}
+
+    public void setVoteCount(Long updateVoteCnt) {
+        this.vote.setVoteCnt(updateVoteCnt);
+    }}

@@ -25,15 +25,6 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, unique = true)
-    private String phoneNumber;
-
-    @ElementCollection
-    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "role")
-    private List<String> roles;
-
-
     @Column(nullable = false)
     private String password;
 
@@ -46,9 +37,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Question> questions = new ArrayList<>();
 
-    public User(String email, String phoneNumber, String username, String password) {
+    public User(String email, String username, String password) {
         this.email = email;
-        this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
         this.answers = new ArrayList<>();
@@ -64,11 +54,6 @@ public class User {
     public void addAnswer(Answer answer){
         answers.add(answer);
     }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
 
 }
 

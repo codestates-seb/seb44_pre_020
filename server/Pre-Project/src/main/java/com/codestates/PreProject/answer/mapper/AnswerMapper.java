@@ -19,5 +19,6 @@ public interface AnswerMapper {
     @Mapping(target = "voteCnt", source = "vote.voteCnt")
     AnswerResponseDto answerToAnswerResponseDto(Answer answer);
 
+
     List<AnswerResponseDto> answersToAnswerResponses(List<Answer> answers);
 }

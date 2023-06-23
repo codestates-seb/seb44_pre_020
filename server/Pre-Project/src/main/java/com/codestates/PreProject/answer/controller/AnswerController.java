@@ -22,6 +22,7 @@ import javax.validation.constraints.Positive;
 import java.net.URI;
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/answers")
 @Validated
@@ -44,6 +45,7 @@ public class AnswerController {
         return ResponseEntity.created(location).build();
     }
 
+    // Todo: Move vote up/ down to post method
     @PatchMapping("/{answer-id}")
     public ResponseEntity patchAnswer(@PathVariable("answer-id") @Positive long answerId,
             @Valid @RequestBody AnswerPatchDto answerPatchDto){
@@ -53,6 +55,17 @@ public class AnswerController {
                 answerPatchDto.getVoteCnt());
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)), HttpStatus.OK);
+    }
+
+    @PostMapping("/{answer-id}/{vote-cnt}")
+    public ResponseEntity postUpVote
+            (@PathVariable("answer-id") Long answerId,
+             @PathVariable("vote-cnt") Long voteCnt) {
+        // todo : vote goes up or down - implementation
+        Answer findAnswer = answerService.findAnswer(answerId);
+        findAnswer = answerService.updateAnswer(findAnswer, answerId, voteCnt);
+
+        return new ResponseEntity(new SingleResponseDto<>(mapper.answerToAnswerResponseDto(findAnswer)), HttpStatus.OK);
     }
 
     @GetMapping("/{answer-id}")
