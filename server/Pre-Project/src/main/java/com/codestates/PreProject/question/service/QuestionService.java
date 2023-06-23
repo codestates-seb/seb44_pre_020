@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,8 @@ public class QuestionService {
 
     public Question createQuestion (Question question) {
         userService.findVerifiedUser(question.getUser().getUserId());
+        question.initializeAnswerList();
+
         return questionRepository.save(question);
     }
 
@@ -48,7 +51,8 @@ public class QuestionService {
     }
 
 
-    public List<Question> getAllQuestions() {
+    // Question 불러올때 answer도 불러오기
+    public List<Question> getAllQuestionsWithAnswers() {
         return questionRepository.findAll();
     }
 

@@ -21,10 +21,6 @@ import javax.validation.constraints.Positive;
 import java.net.URI;
 import java.util.List;
 
-// TODO 클라이언트로부터의 HTTP 요청을 처리하는 클래스
-// 게시글 관련 요청을 처리하고, 필요한 데이터를 서비스 클래스로 전달하거나 응답을 생성하여 클라이언트에게 반환
-// RESTful 웹 서비스에서는 주로 JSON 형태의 데이터를 반환하게 됨. 컨트롤러는 URL 매핑과 요청 처리를 담당함.
-
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/questions")
