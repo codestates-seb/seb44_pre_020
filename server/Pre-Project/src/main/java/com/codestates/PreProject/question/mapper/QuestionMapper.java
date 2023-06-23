@@ -17,7 +17,6 @@ public interface QuestionMapper {
     Question questionPostDtoToQuestion(@Valid QuestionPostDto questionPostDto);
 
     @Mapping(target = "voteCnt", source = "vote.voteCnt")
-
     Question questionPatchDtoToQuestion(@Valid QuestionPatchDto questionPostDto);
 
     @Mapping(target = "voteCnt", source = "vote.voteCnt")
