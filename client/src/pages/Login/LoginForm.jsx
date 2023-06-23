@@ -56,8 +56,8 @@ function LoginForm() {
           dispatch(setStatus(true));
           // * : 토큰을 받아서 유저 데이터를 받아오는 요청(userSlice에 유저 정보 저장)
           dispatch(fetchUser()); */
-
-          location.href="/loginhome";
+          console.log("success!")
+          location.href="/";
         } else {
           setError('No corresponding user information found');
         }
@@ -98,7 +98,7 @@ function LoginForm() {
         type="submit"
         className="w-60 h-10 mt-3 bg-[#1e95ff] hover:bg-[#0074CC] border border-solid rounded flex justify-center items-center font-normal text-xs text-white"
         // eslint-disable-next-line react/no-unknown-property
-        onClickHandler={onLoginHandler}
+        onClick={onLoginHandler}
       >
         Log in
       </button>

@@ -27,7 +27,7 @@ function SignupForm() {
     setPwError(false);
     setError('');
 
-    const name = nameRef.current.value;
+    const username = nameRef.current.value;
     const email = emailRef.current.value;
     const password = pwRef.current.value;
 
@@ -42,7 +42,7 @@ function SignupForm() {
 
 /*     const url = `${BASE_URL}/v1/sign-up`; */
     await axios
-      .post("/users/signup", { userName: name, email, password })
+      .post("/api/users/signup", { username, email, password })
       .then(() => {
         nameRef.current.value = '';
         emailRef.current.value = '';
@@ -52,6 +52,7 @@ function SignupForm() {
       })
       .catch(() => {
         setError('An error has occurred');
+        alert("Sign Up error!")
       });
   };
 
@@ -86,7 +87,7 @@ function SignupForm() {
         type="submit"
         className="w-60 h-10 bg-[#1e95ff] hover:bg-[#0074CC] border border-solid rounded flex justify-center items-center font-normal text-xs text-white mb-8"
         // eslint-disable-next-line react/no-unknown-property
-        onClickHandler={onSignUpHandler}
+        onClick={onSignUpHandler}
       >
         Sign up
       </button>
