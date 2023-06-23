@@ -75,7 +75,7 @@ public class QuestionController {
 
     @GetMapping()
     public ResponseEntity getQuestions() {
-        List<Question> questions = questionService.getAllQuestions();
+        List<Question> questions = questionService.getAllQuestionsWithAnswers();
         return new ResponseEntity(new ListResponseDto<>(mapper.questionsToQuestionResponses(questions)), HttpStatus.OK);
     }
 
