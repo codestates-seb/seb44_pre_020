@@ -17,5 +17,15 @@ export const tagsState = atom({
 
 export const questionDataState = atom({
   key: "questionDataState",
-  default: null,
+  default: {},
+});
+
+export const answersDataState = atom({
+  key: "answersDataState",
+  default: [],
+});
+
+export const commentsDataState = atom({
+  key: "commentsDataState",
+  default: [],
 });

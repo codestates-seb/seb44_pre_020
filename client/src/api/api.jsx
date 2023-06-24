@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const postRequest = async (url, data) => {
+export const postRequest = async (url, data, headers) => {
   try {
-    const res = await axios.post(url, data);
+    const res = await axios.post(url, data, { headers });
     console.log(res);
   } catch (err) {
     console.error("Error:", err);

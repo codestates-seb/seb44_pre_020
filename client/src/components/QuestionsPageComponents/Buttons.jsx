@@ -7,7 +7,7 @@ import { MdHistory } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
 import { patchRequest } from "../../api/api";
 
-const Buttons = () => {
+const Buttons = ({ vote }) => {
   // 10. 투표수 Patch 요청 (vote가 따로있다고 생각했을때-> 답변에 딸려있는게 아닌.)
   // 11. 채택여부 Patch 요청
 
@@ -61,7 +61,7 @@ const Buttons = () => {
       <button onClick={incrementCount} className="text-5xl mb-1">
         <IoCaretUpCircleOutline />
       </button>
-      <div className="mb-1 text-xl font-medium">(ex 32)</div>
+      <div className="mb-1 text-xl font-medium">{vote}</div>
       <button onClick={decrementCount} className="text-5xl mb-2">
         <IoCaretDownCircleOutline />
       </button>

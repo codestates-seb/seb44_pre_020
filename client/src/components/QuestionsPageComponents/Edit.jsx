@@ -3,27 +3,33 @@ import { patchRequest } from "../../api/api";
 import { year, formattedMonth, formattedDay } from "../../assets/strings/date";
 import TipTap from "../TipTap";
 
-const Edit = ({ isEditOpen, setIsEditOpen }) => {
-  const randomData = "haha";
+const Edit = ({
+  isEditOpen,
+  setIsEditOpen,
+  id,
+  handleContentUpdate,
+  content,
+}) => {
+  const randomData = content;
 
   const [editedBody, setEditedBody] = useState(randomData);
 
-  // 6. 질문 및 답변 patch 요청
+  // 6. 질문 및 답변 patch 요청 o
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     const newEditedData = {
-      body: editedBody,
-      date: `${year}-${formattedMonth}-${formattedDay}`,
+      content: editedBody,
     };
     if (newEditedData.body === "") {
       alert("최소 한 글자이상을 작성해주세요.");
     } else {
       patchRequest(
-        "https://9eafe059-f15b-42b9-8571-1c6297da44fa.mock.pstmn.io/",
+        `https://47de-180-230-182-235.ngrok-free.app/answers/${id}`, // id로 변경할 데이터 명시하기 ${id}
         newEditedData
       );
       setIsEditOpen(!isEditOpen);
+      handleContentUpdate(editedBody);
     }
   };
 

@@ -33,24 +33,27 @@ const Form = () => {
     setIsInputFocused(inputId);
   };
 
-  // 1. 질문 post요청 (at once or more than one request)
+  // 1. 질문 post요청 (at once or more than one request) o
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     const postQuestionData = {
-      id: 0,
+      // id: 0, // 서버에서 생성
       title: questionTitle,
       content: questionBody,
-      author: "",
-      date: `${year}-${formattedMonth}-${formattedDay}`,
-      answers: 0,
-      score: 0,
-      tags: tags,
-      views: 0,
-      answerArr: [],
-      comments: [],
+      // userId: "",
+      // date: `${year}-${formattedMonth}-${formattedDay}`, // 서버에서 생성
+      // vote: 0,
+      // tags: tags,
+      // views: 0,
     };
+
+    const headers = {
+      "Content-Type": "application/json", // Example header
+      Authorization: "Bearer your_token", // Example header with token
+    };
+
     if (
       postQuestionData.title === "" ||
       postQuestionData.content === "" ||
@@ -60,10 +63,7 @@ const Form = () => {
         "Title과 Body는 최소 한 글자 이상, Tag는 최소 한 개이상의 태그를 추가해주세요."
       );
     } else {
-      postRequest(
-        "https://032b9d6f-98f0-429c-ae1e-76363c379d20.mock.pstmn.io/",
-        postQuestionData
-      );
+      postRequest("/api/questions", postQuestionData, headers);
       navigate("/");
     }
   };
