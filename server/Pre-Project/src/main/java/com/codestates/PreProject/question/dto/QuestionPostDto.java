@@ -12,9 +12,17 @@ import javax.validation.constraints.Positive;
 @Getter
 @Setter
 public class QuestionPostDto {
+    @Positive
+    private long userId;
     @NotBlank(message="제목을 입력하세요")
     private String title;
 
     @NotBlank(message="질문을 입력하세요")
     private String content;
+
+    public User getUser(){
+        User user = new User();
+        user.setUserId(userId);
+        return user;
+    }
 }
