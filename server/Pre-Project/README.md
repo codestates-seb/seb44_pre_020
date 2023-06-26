@@ -27,3 +27,4 @@
     - [x] vote - 구현 완료, API post로 수정?
 
 Run `./restart.sh` to run your program
+check `build/libs/nohup.out`
