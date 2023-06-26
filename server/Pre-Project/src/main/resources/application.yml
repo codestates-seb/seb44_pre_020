@@ -7,39 +7,15 @@ spring:
     url: jdbc:h2:mem:test
   jpa:
     hibernate:
-      ddl-auto: create  # (1) 스키마 자동 생성
-    show-sql: true      # (2) SQL 쿼리 출력
-    properties:
-      hibernate:
-        format_sql: true  # (3) SQL pretty print
+      ddl-auto: update
+    show-sql: true      # SQL 쿼리 출력
+  #  defer-datasource-initialization: true # 초기 데이터 삽입을 위해 필요하다.
   sql:
     init:
-      data-locations: classpath*:db/h2/data.sql
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            clientId: ${CLIENT_SECRET_ID}
-            clientSecret: ${CLIENT_SECRET_PASS}
-            scope:
-              - email
-              - profile
+      mode: always
 logging:
   level:
     org:
       springframework:
         orm:
           jpa: DEBUG
-server:
-  servlet:
-    encoding:
-      force-response: true
-mail:
-  address:
-    admin: ttpreproject@gmail.com
-jwt:
-  key:
-    secret: ${JWT_SECRET_KEY}
-  access-token-expiration-minutes: 40
-  refresh-token-expiration-minutes: 420

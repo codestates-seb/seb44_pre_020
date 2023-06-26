@@ -17,6 +17,5 @@ public class AnswerComment extends Comment<Answer>{
     @ManyToOne
     @JoinColumn(name = "ANSWER_ID")
     private Answer answer;
-    private Long id;
 
 }

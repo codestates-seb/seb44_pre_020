@@ -11,14 +11,17 @@ import com.codestates.PreProject.response.ListResponseDto;
 import com.codestates.PreProject.response.SingleResponseDto;
 import com.codestates.PreProject.util.UriCreator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.properties.bind.validation.ValidationErrors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -40,9 +43,16 @@ public class QuestionController {
     }
     @PostMapping
     public ResponseEntity postQuestion(@Valid @RequestBody QuestionPostDto questionPostDto){
-        Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPostDto));
-        URI location = UriCreator.createUri(QUESTION_DEFAULT_URL, question.getQuestionId());
-        return ResponseEntity.created(location).build();
+
+        try {
+            Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPostDto));
+            URI location = UriCreator.createUri(QUESTION_DEFAULT_URL, question.getQuestionId());
+            return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.CREATED);
+        } catch (Exception e) {
+            // 예외 처리 로직 작성
+            e.printStackTrace(); // 예외를 콘솔에 출력
+            return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("/{question-id}/{vote-cnt}")

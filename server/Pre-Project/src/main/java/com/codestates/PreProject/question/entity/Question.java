@@ -52,18 +52,11 @@ public class Question {
     @OneToMany(mappedBy = "question")
     private List<Answer> answerList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "question")
-    private List<Answer> answers;
-
     public Question(String title, String content) {
         this.title = title;
         this.content = content;
         this.vote = new Vote();
         this.answerList = new ArrayList<>();
-    }
-
-    public void initializeAnswerList() {
-        this.answers = new ArrayList<>();
     }
 
     public void setViewCount(long viewCount) {

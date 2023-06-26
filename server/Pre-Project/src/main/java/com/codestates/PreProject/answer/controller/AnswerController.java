@@ -41,18 +41,18 @@ public class AnswerController {
     @PostMapping
     public ResponseEntity postAnswer(@Valid @RequestBody AnswerPostDto answerPostDto){
         Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(answerPostDto));
-        URI location = UriCreator.createUri(ANS_DEF_URL, answer.getAnswerId());
+        URI location = UriCreator.createUri(ANS_DEF_URL, answer.getId());
         return ResponseEntity.created(location).build();
     }
 
     // Todo: Move vote up/ down to post method
     @PatchMapping("/{answer-id}")
     public ResponseEntity patchAnswer(@PathVariable("answer-id") @Positive long answerId,
-            @Valid @RequestBody AnswerPatchDto answerPatchDto){
+                                      @Valid @RequestBody AnswerPatchDto answerPatchDto){
         Answer answer = answerService
                 .updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto),
-                answerId,
-                answerPatchDto.getVoteCnt());
+                        answerId,
+                        answerPatchDto.getVoteCnt());
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)), HttpStatus.OK);
     }
@@ -93,4 +93,3 @@ public class AnswerController {
     }
 
 }
-
