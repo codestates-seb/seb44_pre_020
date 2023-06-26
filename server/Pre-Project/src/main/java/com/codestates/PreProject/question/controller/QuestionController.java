@@ -33,12 +33,10 @@ public class QuestionController {
     private final static String QUESTION_DEFAULT_URL = "/questions";
 
     private final QuestionService questionService;
-    private final AnswerService answerService;
     private final QuestionMapper mapper;
 
     public QuestionController(QuestionService questionService, AnswerService answerService, QuestionMapper mapper) {
         this.questionService = questionService;
-        this.answerService = answerService;
         this.mapper = mapper;
     }
     @PostMapping
@@ -56,7 +54,7 @@ public class QuestionController {
     }
 
     @PostMapping("/{question-id}/{vote-cnt}")
-    public ResponseEntity postUpVote
+    public ResponseEntity postVote
             (@PathVariable("question-id") Long questionId,
              @PathVariable("vote-cnt") Long voteCnt,
              @Positive @RequestParam Long userId) {

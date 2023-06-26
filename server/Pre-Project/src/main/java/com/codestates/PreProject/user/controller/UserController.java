@@ -5,6 +5,7 @@ package com.codestates.PreProject.user.controller;
 import com.codestates.PreProject.answer.dto.AnswerPatchDto;
 import com.codestates.PreProject.response.ListResponseDto;
 import com.codestates.PreProject.response.SingleResponseDto;
+import com.codestates.PreProject.user.dto.UserLoginDto;
 import com.codestates.PreProject.user.dto.UserPatchDto;
 import com.codestates.PreProject.user.dto.UserSignUpDto;
 import com.codestates.PreProject.user.entity.User;
@@ -12,6 +13,7 @@ import com.codestates.PreProject.user.mapper.UserMapper;
 import com.codestates.PreProject.user.service.UserService;
 import com.codestates.PreProject.util.UriCreator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -54,8 +56,14 @@ public class UserController {
 
     // TODO: login과 logout 구현 예정 -- Spring Security
     @PostMapping("/login")
-    public ResponseEntity loginUser(){
+    public ResponseEntity loginUser(OAuth2ClientAutoConfiguration auth2ClientAutoConfiguration){
+//        Boolean res = userService.login(userDto);
         return null;
+    }
+
+    @GetMapping("/login")
+    public String loginForm(){
+        return "Login";
     }
 
     @PostMapping("/logout")
