@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# clean build
+# clean build with scan
+# Added scan option to see error msg anywhere.
 
-./gradlew clean build
+./gradlew clean build --scan
 
 # if server is still running, then stop it
 ps -ef | grep "Pre-Project-0.0.1-SNAPSHOT.jar" | grep -v grep | awk '{print $2}' | xargs kill -9 2> /dev/null
