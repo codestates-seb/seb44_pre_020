@@ -11,6 +11,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface AnswerMapper {
+    @Mapping(target = "question.questionId", source = "questionId")
     Answer answerPostDtoToAnswer(AnswerPostDto answerPostDto);
 
     @Mapping(target = "vote.voteCnt", source = "voteCnt")
@@ -18,6 +19,6 @@ public interface AnswerMapper {
 
     @Mapping(target = "voteCnt", source = "vote.voteCnt")
     AnswerResponseDto answerToAnswerResponseDto(Answer answer);
-
+    
     List<AnswerResponseDto> answersToAnswerResponses(List<Answer> answers);
 }

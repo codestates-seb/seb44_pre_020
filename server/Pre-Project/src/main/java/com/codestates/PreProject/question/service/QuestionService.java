@@ -17,13 +17,11 @@ import java.util.Optional;
 public class QuestionService {
     private final QuestionRepository questionRepository;
     private final UserService userService;
-    private final AnswerService answerService;
 
 
     public QuestionService(QuestionRepository questionRepository, UserService userService, AnswerService answerService) {
         this.questionRepository = questionRepository;
         this.userService = userService;
-        this.answerService = answerService;
     }
 
     public Question createQuestion (Question question) {
@@ -45,10 +43,9 @@ public class QuestionService {
         return questionRepository.save(findQuestion);
     }
 
-    public Question findQuestion(long questionId) {
+    public Question findQuestion(Long questionId) {
         return findVerifiedQuestion(questionId);
     }
-
 
     public List<Question> getAllQuestions() {
         return questionRepository.findAll();

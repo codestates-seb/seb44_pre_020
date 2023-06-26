@@ -71,8 +71,9 @@ public class QuestionController {
     public ResponseEntity getQuestion(@PathVariable("question-id") @Positive long questionId){
         Question question = questionService.findQuestion(questionId);
 
+        // Todo : brew answer as list (mapping needed?)
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.questionToQuestionResponseDto(question)),HttpStatus.OK);
+                new SingleResponseDto<>(mapper.questionToQuestionWithAnswerListDto(question)),HttpStatus.OK);
     }
 
     @GetMapping()

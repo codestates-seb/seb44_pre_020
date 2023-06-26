@@ -16,7 +16,8 @@ public class AnswerPatchDto {
     @Column(nullable = false)
     private String content;
 
-    @Range(min = -1, max = 1, message = "유효한 값은 -1 또는 1이어야 합니다.")    private Long voteCnt;
+    @Range(min = -1, max = 1, message = "유효한 값은 -1 또는 1이어야 합니다.")
+    private Long voteCnt;
 
     private Boolean accepted;
 }

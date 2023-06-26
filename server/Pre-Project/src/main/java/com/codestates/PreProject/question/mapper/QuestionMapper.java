@@ -3,6 +3,7 @@ package com.codestates.PreProject.question.mapper;
 import com.codestates.PreProject.question.dto.QuestionPatchDto;
 import com.codestates.PreProject.question.dto.QuestionPostDto;
 import com.codestates.PreProject.question.dto.QuestionResponseDto;
+import com.codestates.PreProject.question.dto.QuestionWithAnswerListDto;
 import com.codestates.PreProject.question.entity.Question;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -21,6 +22,9 @@ public interface QuestionMapper {
 
     @Mapping(target = "voteCnt", source = "vote.voteCnt")
     QuestionResponseDto questionToQuestionResponseDto(Question question);
+
+    @Mapping(target = "voteCnt", source = "vote.voteCnt")
+    QuestionWithAnswerListDto questionToQuestionWithAnswerListDto(Question question);
 
     List<QuestionResponseDto> questionsToQuestionResponses(List<Question> allQuestions);
 
