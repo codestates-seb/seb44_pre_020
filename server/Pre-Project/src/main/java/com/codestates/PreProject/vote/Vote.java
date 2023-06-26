@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Vote <T> {
+public class Vote{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long voteId;
@@ -19,11 +19,11 @@ public class Vote <T> {
     @Column(nullable = false)
     public Long voteCnt = 0L;
 
-    @OneToOne
-    // mapping은 각 구현체에서...
-    private T content;
+//    @OneToOne
+//    // mapping은 각 구현체에서...
+//    private T content;
 
-    public void setContent(T content){
-        this.content = content;
-    }
+//    public void setContent(T content){
+//        this.content = content;
+//    }
 }
