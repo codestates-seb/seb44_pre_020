@@ -1,7 +1,6 @@
 package com.codestates.PreProject.answer.entity;
 
-import com.codestates.PreProject.comment.entity.AnswerComment;
-import com.codestates.PreProject.comment.entity.Comment;
+//import com.codestates.PreProject.comment.entity.AnswerComment;
 import com.codestates.PreProject.question.entity.Question;
 import com.codestates.PreProject.user.entity.User;
 import com.codestates.PreProject.vote.Vote;
@@ -38,8 +37,8 @@ public class Answer{
     @JoinColumn(name = "QUESTION_ID")
     private Question question;
 
-    @OneToMany(mappedBy = "answer")
-    private List<AnswerComment> comments = new ArrayList<>();
+//    @OneToMany(mappedBy = "answer")
+//    private List<AnswerComment> comments = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
