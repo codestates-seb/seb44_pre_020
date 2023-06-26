@@ -12,6 +12,8 @@ const Question = ({ border, data, isQuestion }) => {
   const [commentBody, setCommentBody] = useState("");
   const [commentsData, setCommentsData] = useState([]);
   const [contentState, setContentState] = useState(data.content);
+  const [voteState, setVoteState] = useState(data.vote);
+  const [acceptedState, setAcceptedState] = useState(data.accepted);
 
   const handleContentUpdate = (updatedContent) => {
     setContentState(updatedContent);
@@ -81,7 +83,14 @@ const Question = ({ border, data, isQuestion }) => {
   };
   return (
     <div className={`grid grid-cols-question-grid mt-5 ${border}`}>
-      <Buttons vote={data.vote} />
+      <Buttons
+        voteState={voteState}
+        setVoteState={setVoteState}
+        acceptedState={acceptedState}
+        setAcceptedState={setAcceptedState}
+        isQuestion={isQuestion}
+      />
+
       <Content
         content={contentState}
         tags={data.tags}

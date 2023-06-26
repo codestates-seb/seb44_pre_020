@@ -19,7 +19,6 @@ const Content = ({
   const [questionData, setQuestionData] = useRecoilState(questionDataState);
   const [answersData, setAnswersData] = useRecoilState(answersDataState);
 
-  console.log(content);
   const navigate = useNavigate();
 
   const handleEditClick = () => {
