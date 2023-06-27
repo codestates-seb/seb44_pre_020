@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# clean build with scan
-# Added scan option to see error msg anywhere.
-
-./gradlew clean build --scan
-
 # if server is still running, then stop it
 ps -ef | grep "Pre-Project-0.0.1-SNAPSHOT.jar" | grep -v grep | awk '{print $2}' | xargs kill -9 2> /dev/null
 
@@ -13,6 +8,10 @@ if [ $? -eq 0 ];then
 else
     echo "Application Not Running"
 fi
+
+# clean build with scan
+# Added scan option to see error msg anywhere.
+./gradlew clean build --scan
 
 # restart server deployment file
 echo "Application Restart"
