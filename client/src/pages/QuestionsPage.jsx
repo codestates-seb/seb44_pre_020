@@ -27,20 +27,25 @@ const QuestionsPage = () => {
         //   Authorization: "Bearer your_token", // Example header with token
         // };
 
-        const questionRes = await getRequest(`/mockupdata/questions.json`); // questionId 이용해서, get 요청 보내기
+        const questionRes = await getRequest(
+          `http://138.2.62.18:8080/${questionId}`
+        ); // questionId 이용해서, get 요청 보내기
 
-        const question = questionRes.questions.find(
-          (q) => q.id === +questionId
-        );
+        console.log(questionRes);
+        // console.log(JSON.parse(questionRes));
 
-        setQuestionData(question);
+        // const question = questionRes.questions.find(
+        //   (q) => q.id === +questionId
+        // );
+
+        // setQuestionData(question);
 
         // 답변부분 따로 요청보내기(답변이 질문과 함께 들어오면 이부분 지우고 질문 요청 수정 필요)
-        const answerRes = await getRequest("/mockupdata/answers.json"); // questionId 이용해서, get 요청 보내기
-        const answer = answerRes.answers.filter(
-          (a) => a["question_id"] === +questionId
-        );
-        setAnswersData(answer);
+        // const answerRes = await getRequest("/mockupdata/answers.json"); // questionId 이용해서, get 요청 보내기
+        // const answer = answerRes.answers.filter(
+        //   (a) => a["question_id"] === +questionId
+        // );
+        // setAnswersData(answer);
       } catch (err) {
         console.error("Error:", err);
       }
