@@ -1,5 +1,14 @@
 import axios from "axios";
 
+// export const postRequest = async (url, data, headers) => {
+//   try {
+//     const res = await axios.post(url, data, { headers });
+//     console.log(res);
+//   } catch (err) {
+//     console.error("Error:", err);
+//   }
+// };
+
 export const postRequest = async (url, data) => {
   try {
     const res = await axios.post(url, data);
@@ -9,9 +18,9 @@ export const postRequest = async (url, data) => {
   }
 };
 
-export const getRequest = async (url) => {
+export const getRequest = async (url, headers) => {
   try {
-    const res = await axios.get(url);
+    const res = await axios.get(url, { headers });
     return res.data;
   } catch (err) {
     console.error("Error:", err);
