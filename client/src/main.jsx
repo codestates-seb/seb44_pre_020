@@ -10,6 +10,7 @@ import NotFound from "./components/NotFound.jsx";
 import MainSearchPage from "./pages/MainSearchPage.jsx";
 import LoginPage from "./pages/Login/LoginPage.jsx";
 import Signup from "./pages/Siginup/Signup.jsx";
+import LoginHeader from "./components/header/LoginHeader.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/loginhome",
+        element: <LoginHeader/>,
       },
     ],
   },

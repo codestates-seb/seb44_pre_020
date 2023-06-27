@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 import StackoverFlowLogo from "../../assets/logo.png";
-import LoginButton from "./LoginButton";
-import Search from "./Search";
-import Nav from "./Nav";
+import Nav from './Nav'
+import Search from './Search'
+import LoginHome from '../../pages/Login/LoginHome'
 
-const Header = () => {
+function LoginHeader() {
   return (
     <header className="flex sticky z-10 w-screen bg-[#F8F8F8] h-[56px] top-0 left-0 border-solid border-t-[3px] border-[#ef8236] shadow-md text-[13px] text-nav-color font-normal">
       <div className="flex items-center justify-center w-[1265px] h-[52.8px] max-w-[1265px] mx-auto">
@@ -26,10 +27,10 @@ const Header = () => {
         </ol> */}
         <Nav />
         <Search />
-        <LoginButton />
+        <LoginHome />
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default LoginHeader

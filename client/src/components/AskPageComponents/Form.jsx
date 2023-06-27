@@ -33,37 +33,50 @@ const Form = () => {
     setIsInputFocused(inputId);
   };
 
+  
+
   // 1. 질문 post요청 (at once or more than one request)
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     const postQuestionData = {
-      id: 0,
-      title: questionTitle,
-      content: questionBody,
-      author: "",
-      date: `${year}-${formattedMonth}-${formattedDay}`,
-      answers: 0,
-      score: 0,
-      tags: tags,
-      views: 0,
-      answerArr: [],
-      comments: [],
+      // id: 0,
+      // title: questionTitle,
+      // content: questionBody,
+      // author: "",
+      // date: `${year}-${formattedMonth}-${formattedDay}`,
+      // answers: 0,
+      // score: 0,
+      // // tags: tags,
+      // views: 0,
+      // answerArr: [],
+      // comments: [],
+      
+      title : "This is question content",
+      content : "whit",
+      userId  :1
+    };
+    const headers = {
+      'Content-Type': 'application/json', // Example header
+      'Authorization': 'Bearer 2RYGW0xC7VVyG5r1UiPPv8isoM2_QrXfpyosdFJ4poeR9che', // Example header with token
     };
     if (
       postQuestionData.title === "" ||
-      postQuestionData.content === "" ||
-      tags.length === 0
+      postQuestionData.content === ""
     ) {
       alert(
         "Title과 Body는 최소 한 글자 이상, Tag는 최소 한 개이상의 태그를 추가해주세요."
       );
     } else {
       postRequest(
-        "https://032b9d6f-98f0-429c-ae1e-76363c379d20.mock.pstmn.io/",
-        postQuestionData
+        
+        "https://d3c2-180-230-182-235.ngrok-free.app/questions",
+        // "http://localhost:8080/questions",
+        postQuestionData,
+        headers
       );
+      console.log("success");
       navigate("/");
     }
   };
