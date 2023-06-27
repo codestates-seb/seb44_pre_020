@@ -22,13 +22,14 @@ const QuestionsPage = () => {
   useEffect(() => {
     const fetchData = async (questionId) => {
       try {
-        // const headers = {
-        //   "Content-Type": "application/json", // Example header
-        //   Authorization: "Bearer your_token", // Example header with token
-        // };
+        const headers = {
+          "Content-Type": "application/json", // Example header
+          Authorization: "Bearer your_token", // Example header with token
+        };
 
         const questionRes = await getRequest(
-          `http://138.2.62.18:8080/${questionId}`
+          `https://17b4-180-230-182-235.ngrok-free.app/questions/1`,
+          headers
         ); // questionId 이용해서, get 요청 보내기
 
         console.log(questionRes);
@@ -52,7 +53,7 @@ const QuestionsPage = () => {
     };
 
     fetchData(questionId);
-  }, [setQuestionData, setAnswersData, questionId]);
+  }, []);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
