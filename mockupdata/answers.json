@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "id": 1,
+      "title": "Reversing a string in JavaScript",
+      "content": "You can reverse a string in JavaScript by using the `split()`, `reverse()`, and `join()` methods. Here's an example:\n\n```javascript\nfunction reverseString(str) {\n  return str.split('').reverse().join('');\n}\n\nconsole.log(reverseString('Hello, world!')); // Output: \"!dlrow ,olleH\"\n```",
+      "author": "Alice",
+      "date": "2023-06-21",
+      "vote": 0,
+      "accepted": true,
+      "question_id": 1
+    },
+    {
+      "id": 2,
+      "title": "Reading a file in Python",
+      "content": "To read a file in Python, you can use the `open()` function and then read the file using various methods. Here's an example:\n\n```python\nwith open('filename.txt', 'r') as file:\n  contents = file.read()\n  print(contents)\n```",
+      "author": "Bob",
+      "date": "2023-06-22",
+      "vote": 0,
+      "accepted": false,
+      "question_id": 1
+    },
+    {
+      "id": 3,
+      "title": "Sorting an array in JavaScript",
+      "content": "You can use the `sort()` method to sort an array in JavaScript. Here's an example for sorting numbers in ascending order:\n\n```javascript\nconst numbers = [3, 1, 5, 2, 4];\nnumbers.sort((a, b) => a - b);\nconsole.log(numbers); // Output: [1, 2, 3, 4, 5]\n```",
+      "author": "Charlie",
+      "date": "2023-06-23",
+      "vote": 0,
+      "accepted": true,
+      "question_id": 2
+    }
+  ]
+}
