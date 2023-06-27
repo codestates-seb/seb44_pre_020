@@ -1,40 +1,34 @@
 {
   "questions": [
     {
-      "id": 0,
-      "title": "why javascript is so weird?",
-      "content": "why javascript is so weird? so annoying",
-      "author": "Dongbin Yoo",
-      "date": "2023-06-20",
-      "answers": 0,
-      "score": 0,
-      "tags": ["javascript"],
+      "id": 1,
+      "title": "How to reverse a string in JavaScript?",
+      "content": "I'm trying to reverse a string using JavaScript. Can someone please help me with the code?",
+      "author": "JohnDoe",
+      "date": "2023-06-21",
+      "vote": 0,
       "views": 0,
-      "answer": [
-        {
-          "id": 0,
-          "content": "i don't know",
-          "author": "harry porter",
-          "date": "2023-06-20",
-          "score": 0,
-          "comment": [
-            {
-              "id": 0,
-              "content": "lol",
-              "author": "spongebob",
-              "date": "2023-06-20"
-            }
-          ]
-        }
-      ],
-      "comment": [
-        {
-          "id": 0,
-          "content": "lol",
-          "author": "spongebob",
-          "date": "2023-06-20"
-        }
-      ]
+      "tags": ["javascript"]
+    },
+    {
+      "id": 2,
+      "title": "How to read a file in Python?",
+      "content": "I need to read the contents of a file in Python. Any suggestions or code examples?",
+      "author": "JaneSmith",
+      "date": "2023-06-22",
+      "vote": 0,
+      "views": 0,
+      "tags": ["python"]
+    },
+    {
+      "id": 3,
+      "title": "How to sort an array in JavaScript?",
+      "content": "I have an array of numbers and I want to sort it in ascending order using JavaScript. What's the best approach?",
+      "author": "SamWilson",
+      "date": "2023-06-23",
+      "vote": 0,
+      "views": 0,
+      "tags": ["javascript"]
     }
   ]
 }

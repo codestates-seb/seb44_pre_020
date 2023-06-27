@@ -33,53 +33,66 @@ const Form = () => {
     setIsInputFocused(inputId);
   };
 
-  
-
-  // 1. 질문 post요청 (at once or more than one request)
+  // 1. 질문 post요청 (at once or more than one request) o
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const postQuestionData = {
-      // id: 0,
-      // title: questionTitle,
-      // content: questionBody,
-      // author: "",
-      // date: `${year}-${formattedMonth}-${formattedDay}`,
-      // answers: 0,
-      // score: 0,
-      // // tags: tags,
-      // views: 0,
-      // answerArr: [],
-      // comments: [],
-      
-      title : "This is question content",
-      content : "whit",
-      userId  :1
+    const createQuestionData = {
+      title: questionTitle,
+      content: questionBody,
+      userId: 2,
     };
-    const headers = {
-      'Content-Type': 'application/json', // Example header
-      'Authorization': 'Bearer 2RYGW0xC7VVyG5r1UiPPv8isoM2_QrXfpyosdFJ4poeR9che', // Example header with token
-    };
-    if (
-      postQuestionData.title === "" ||
-      postQuestionData.content === ""
-    ) {
-      alert(
-        "Title과 Body는 최소 한 글자 이상, Tag는 최소 한 개이상의 태그를 추가해주세요."
-      );
+
+    if (createQuestionData.title === "" || createQuestionData.content === "") {
+      alert("Title과 Body는 최소 한 글자 이상 작성해주세요.");
     } else {
       postRequest(
-        
-        "https://d3c2-180-230-182-235.ngrok-free.app/questions",
-        // "http://localhost:8080/questions",
-        postQuestionData,
-        headers
+        "https://17b4-180-230-182-235.ngrok-free.app/questions",
+        createQuestionData
       );
-      console.log("success");
       navigate("/");
     }
   };
+
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   const postQuestionData = {
+  //     // id: 0, // 서버에서 생성
+  //     title: questionTitle,
+  //     content: questionBody,
+  //     // userId: 1,
+  //     // date: `${year}-${formattedMonth}-${formattedDay}`, // 서버에서 생성
+  //     // vote: 0,
+  //     // tags: tags,
+  //     // views: 0,
+  //   };
+
+  //   const headers = {
+  //     "Content-Type": "application/json", // Example header
+  //     Authorization: "Bearer your_token", // Example header with token
+  //   };
+
+  //   // const requestBody = JSON.stringify(postQuestionData);
+
+  //   if (
+  //     postQuestionData.title === "" ||
+  //     postQuestionData.content === "" ||
+  //     tags.length === 0
+  //   ) {
+  //     alert(
+  //       "Title과 Body는 최소 한 글자 이상, Tag는 최소 한 개이상의 태그를 추가해주세요."
+  //     );
+  //   } else {
+  //     postRequest(
+  //       "http://138.2.62.18:8080/questions",
+  //       postQuestionData,
+  //       headers
+  //     );
+  //     navigate("/");
+  //   }
+  // };
 
   return (
     <form onSubmit={handleFormSubmit}>

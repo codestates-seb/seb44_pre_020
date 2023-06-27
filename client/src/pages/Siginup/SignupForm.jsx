@@ -1,31 +1,30 @@
 /* import React from 'react' */
 
 import { useRef, useState } from "react";
-import Label from "../../components/ui/Label"
-import axios from 'axios';
+import Label from "../../components/ui/Label";
+import axios from "axios";
 
 /* const BASE_URL = process.env.REACT_APP_BASE_URL; */
 
-function SignupForm() {  
-
+function SignupForm() {
   const EMAIL_REGEX = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z0-9]+/;
-  const PW_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{7,}$/;
+  const PW_REGEX =
+    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{7,}$/;
 
   const [emailError, setEmailError] = useState(false);
   const [pwError, setPwError] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const pwRef = useRef(null);
 
-
-  const onSignUpHandler = async e => {
+  const onSignUpHandler = async (e) => {
     e.preventDefault();
 
     setEmailError(false);
     setPwError(false);
-    setError('');
+    setError("");
 
     const username = nameRef.current.value;
     const email = emailRef.current.value;
@@ -40,19 +39,23 @@ function SignupForm() {
       return;
     }
 
-/*     const url = `${BASE_URL}/v1/sign-up`; */
+    /*     const url = `${BASE_URL}/v1/sign-up`; */
     await axios
-      .post("/api/users/signup", { username, email, password })
+      .post("https://17b4-180-230-182-235.ngrok-free.app/users/signup", {
+        username,
+        email,
+        password,
+      })
       .then(() => {
-        nameRef.current.value = '';
-        emailRef.current.value = '';
-        pwRef.current.value = '';
-/*         navigate('/user/login'); */
-        alert("Sign Up Success!")
+        nameRef.current.value = "";
+        emailRef.current.value = "";
+        pwRef.current.value = "";
+        /*         navigate('/user/login'); */
+        alert("Sign Up Success!");
       })
       .catch(() => {
-        setError('An error has occurred');
-        alert("Sign Up error!")
+        setError("An error has occurred");
+        alert("Sign Up error!");
       });
   };
 
@@ -80,9 +83,12 @@ function SignupForm() {
         <p className="flex justify-between items-end w-60">Password</p>
       </Label>
       <p className="text-xs font-light">
-      Passwords must contain at least eight characters, including at least 1 letter and 1 number.
+        Passwords must contain at least eight characters, including at least 1
+        letter and 1 number.
       </p>
-      <p className="mt-8 font-light text-xs text-red-600 text-center">{error}</p>
+      <p className="mt-8 font-light text-xs text-red-600 text-center">
+        {error}
+      </p>
       <button
         type="submit"
         className="w-60 h-10 bg-[#1e95ff] hover:bg-[#0074CC] border border-solid rounded flex justify-center items-center font-normal text-xs text-white mb-8"
@@ -92,13 +98,13 @@ function SignupForm() {
         Sign up
       </button>
       <p className="text-xs font-light">
-        By clicking “Sign up”, you agree to our{' '}
+        By clicking “Sign up”, you agree to our{" "}
         <a href="http://#" className="text-sky-800 hover:text-sky-600">
           terms of service
         </a>
         &nbsp;and acknowledge that you have read and understand our&nbsp;
         <a href="http://#" className="text-sky-800 hover:text-sky-600">
-          privacy policy 
+          privacy policy
         </a>
         &nbsp;and&nbsp;
         <a href="http://#" className="text-sky-800 hover:text-sky-600">
@@ -106,7 +112,7 @@ function SignupForm() {
         </a>
       </p>
     </form>
-  )
+  );
 }
 
 export default SignupForm;

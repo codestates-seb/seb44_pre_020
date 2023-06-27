@@ -10,7 +10,11 @@ const Header = () => {
       <div className="flex items-center justify-center w-[1265px] h-[52.8px] max-w-[1265px] mx-auto">
         <Link to="/">
           <div className="h-[100%] flex items-center px-[8px] hover:bg-[#E1E3E5]">
-            <img className="min-w-[164px] w-[150px] h-[30px]  text-white" src={StackoverFlowLogo} alt="Stack Overflow Logo" />
+            <img
+              className="min-w-[164px] w-[150px] h-[30px]  text-white"
+              src={StackoverFlowLogo}
+              alt="Stack Overflow Logo"
+            />
           </div>
         </Link>
         {/* <ol className="flex w-[234px] gap-[4px] p-[2px}">

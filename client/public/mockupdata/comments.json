@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "id": 1,
+      "content": "This is a comment.",
+      "author": "JohnDoe",
+      "date": "2023-06-21",
+      "content_id": 1
+    },
+    {
+      "id": 2,
+      "content": "Another comment here.",
+      "author": "JaneSmith",
+      "date": "2023-06-22",
+      "content_id": 1
+    },
+    {
+      "id": 3,
+      "content": "Yet another comment.",
+      "author": "SamWilson",
+      "date": "2023-06-23",
+      "content_id": 2
+    },
+    {
+      "id": 4,
+      "content": "A comment on a different content.",
+      "author": "JohnDoe",
+      "date": "2023-06-24",
+      "content_id": 2
+    },
+    {
+      "id": 5,
+      "content": "An anonymous comment.",
+      "author": "Anonymous",
+      "date": "2023-06-25",
+      "content_id": 3
+    }
+  ]
+}
